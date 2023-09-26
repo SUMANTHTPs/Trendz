@@ -7,7 +7,7 @@ function ProductTile({shirt}:any) {
 
     return (
         <div className="lg:w-1/4 md:w-1/2 p-4 w-full border border-gray-300 rounded-md">
-            <Link href={`/products/${slug}`} className="block relative h-80 rounded overflow-hidden">
+            <Link href={`/products/${slug}`} className="block h-80 rounded overflow-hidden">
                     <img alt={title} className="object-cover object-center w-full block" src={img} />
                 </Link>
                 <div className="mt-4">
