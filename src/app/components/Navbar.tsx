@@ -22,8 +22,6 @@ const Navbar = () => {
             <Link href={"/mugs"}><li>Mugs</li></Link>
           </ul>
         </div>
-
-
         <div className="cart" onClick={() => dispatch(toggleCartModel())}>
           <img src={icons.cart} />
         </div>

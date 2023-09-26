@@ -5,7 +5,7 @@ type CartProps = {
 };
 
 const initialState = {
-  isOpen: true,
+  isOpen: false,
 } as CartProps;
 
 export const cart = createSlice({
