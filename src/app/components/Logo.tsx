@@ -18,7 +18,7 @@ const Logo = () => {
         alt='logo'
       />
       <h1 style={{ fontFamily: "cursive" }} className='text-blue-900 font-bold text-3xl'>
-        Trendy Wear
+        TrendZ
       </h1>
     </div>
   )
