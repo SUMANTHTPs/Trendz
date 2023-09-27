@@ -1,9 +1,15 @@
 import { CartItemProps } from "@/redux/features/cartSlice";
 
-export function setCartToLocalStorage(item: CartItemProps) {
+export function setCartToLocalStorage(item: any) {
   return localStorage.setItem("cart", JSON.stringify(item));
 }
 
 export function getCartFromLocalStorage() {
-  return localStorage.getItem("cart");
+  const storedItems = localStorage.getItem("cart");
+  const cartItems = storedItems ? JSON.parse(storedItems) : [];
+  return cartItems;
+}
+
+export function removeCartFromLocalStorage() {
+    localStorage.removeItem("cart")
 }
