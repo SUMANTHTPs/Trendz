@@ -7,7 +7,7 @@ function ProductTile({ product }: any) {
     const productURL = `/products/${slug}`
 
     return (
-        <div className="lg:w-1/5 md:w-1/2 p-4 w-full border border-gray-200 rounded-lg hover:shadow-lg hover:border-gray-300">
+        <div className="lg:w-1/5 md:w-1/3 p-4 w-full border border-gray-200 rounded-lg hover:shadow-lg hover:border-gray-300">
             <Link href={productURL} className="block h-80 rounded overflow-hidden">
                 <img alt={title} className="object-cover object-center w-full block" src={img} />
             </Link>

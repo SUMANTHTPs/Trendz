@@ -1,33 +1,51 @@
-"use client"
-import { tShirts } from '@/data/data';
-import { addToCart, decreaseQuantity } from '@/redux/features/cartSlice';
-import React from 'react'
-import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
+"use client";
+import React from 'react';
 import { useDispatch } from 'react-redux';
+import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai';
+import { addToCart, decreaseQuantity } from '@/redux/features/cartSlice';
+import { tShirts } from '@/data/data';
 
 function CartItem({ cartItem }: any) {
     const { productId, amount } = cartItem;
     const dispatch = useDispatch();
 
+    // Find the matching item details
     const matchingItem = tShirts.find(item => item.slug === productId);
+
     return (
-        <div className='flex p-2'>
+        <div className="flex p-2 border-b border-gray-200">
             {matchingItem && (
-                <div className='flex gap-4 p-5 items-center'>
-                    <img src={`${matchingItem.img}`} className='w-16 h-full border border-gray-200 rounded-md' alt={productId} />
-                    <div>
-                        <h2 className='flex flex-wrap w-[50vw] sm:w-[12vw] md:w-[18vw]'>{matchingItem?.title}</h2>
-                        <p>₹{matchingItem.price}</p>
+                <>
+                    <div className="w-16 h-16 overflow-hidden">
+                        <img
+                            src={matchingItem.img}
+                            alt={productId}
+                            className="w-full h-full object-cover"
+                        />
                     </div>
-                    <div className='flex gap-2 items-center right-3'>
-                        <AiFillMinusCircle onClick={() => dispatch(decreaseQuantity(matchingItem.slug))} />
-                        {amount}
-                        <AiFillPlusCircle onClick={() => dispatch(addToCart(matchingItem.slug))} />
+                    <div className="flex flex-col flex-grow pl-4">
+                        <h2 className="text-xl font-semibold">{matchingItem.title}</h2>
+                        <p className="text-gray-600">₹{matchingItem.price}</p>
                     </div>
-                </div>
+                    <div className="flex items-center">
+                        <button
+                            onClick={() => dispatch(decreaseQuantity(matchingItem.slug))}
+                            className="text-blue-700 hover:text-blue-900 transition-colors"
+                        >
+                            <AiFillMinusCircle size={24} />
+                        </button>
+                        <span className="mx-2 text-lg font-semibold">{amount}</span>
+                        <button
+                            onClick={() => dispatch(addToCart(matchingItem.slug))}
+                            className="text-blue-700 hover:text-blue-900 transition-colors"
+                        >
+                            <AiFillPlusCircle size={24} />
+                        </button>
+                    </div>
+                </>
             )}
         </div>
-    )
+    );
 }
 
-export default CartItem
+export default CartItem;
