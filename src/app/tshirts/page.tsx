@@ -11,7 +11,7 @@ function TShirts() {
         <div className="flex flex-wrap -m-4 gap-5 justify-center">
           {tShirts.map((shirt) => {
             return (
-              <ProductTile key={shirt.slug} shirt={shirt} />
+              <ProductTile key={shirt.slug} product={shirt} />
             )
           })}
         </div>

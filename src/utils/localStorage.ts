@@ -11,5 +11,5 @@ export function getCartFromLocalStorage() {
 }
 
 export function removeCartFromLocalStorage() {
-    localStorage.removeItem("cart")
+  localStorage.clear();
 }

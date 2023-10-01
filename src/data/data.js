@@ -7,6 +7,7 @@ export const tShirts = [
     description:
       "Care Instructions: Hand Wash OnlyFit Type: Regular FitStyle Number - 3911Regular fit Polo neck with half sleeves Authentic Jockey logo on the chest Label free for all day comfort This product comes with a variety of logo designs. Image shown here is for representation only. Actual logo design may vary. Wash care Instruction : Gentle wash 40 Degree, Do not bleach, Do not wring, Tumble dry low, Medium iron, Do not dry clean, Wash inside out with like colors. Do not iron on label/print",
     price: "1499",
+    productType: "T shirts",
   },
   {
     slug: "tshirts-van-heusen-reg-fit",
@@ -15,6 +16,7 @@ export const tShirts = [
     description:
       "Care Instructions: Hand Wash OnlyFit Type: Regular FitStyle Number - 3911Regular fit Polo neck with half sleeves Authentic Jockey logo on the chest Label free for all day comfort This product comes with a variety of logo designs. Image shown here is for representation only. Actual logo design may vary. Wash care Instruction : Gentle wash 40 Degree, Do not bleach, Do not wring, Tumble dry low, Medium iron, Do not dry clean, Wash inside out with like colors. Do not iron on label/print",
     price: "2499",
+    productType: "T shirts",
   },
   {
     slug: "jokey-39111",
@@ -24,6 +26,7 @@ export const tShirts = [
     description:
       "Care Instructions: Hand Wash OnlyFit Type: Regular FitStyle Number - 3911Regular fit Polo neck with half sleeves Authentic Jockey logo on the chest Label free for all day comfort This product comes with a variety of logo designs. Image shown here is for representation only. Actual logo design may vary. Wash care Instruction : Gentle wash 40 Degree, Do not bleach, Do not wring, Tumble dry low, Medium iron, Do not dry clean, Wash inside out with like colors. Do not iron on label/print",
     price: "499",
+    productType: "T shirts",
   },
   {
     slug: "tshirts-van-heusen-reg-fit1",
@@ -32,6 +35,7 @@ export const tShirts = [
     description:
       "Care Instructions: Hand Wash OnlyFit Type: Regular FitStyle Number - 3911Regular fit Polo neck with half sleeves Authentic Jockey logo on the chest Label free for all day comfort This product comes with a variety of logo designs. Image shown here is for representation only. Actual logo design may vary. Wash care Instruction : Gentle wash 40 Degree, Do not bleach, Do not wring, Tumble dry low, Medium iron, Do not dry clean, Wash inside out with like colors. Do not iron on label/print",
     price: "2099",
+    productType: "T shirts",
   },
   {
     slug: "jokey-39112",
@@ -41,6 +45,7 @@ export const tShirts = [
     description:
       "Care Instructions: Hand Wash OnlyFit Type: Regular FitStyle Number - 3911Regular fit Polo neck with half sleeves Authentic Jockey logo on the chest Label free for all day comfort This product comes with a variety of logo designs. Image shown here is for representation only. Actual logo design may vary. Wash care Instruction : Gentle wash 40 Degree, Do not bleach, Do not wring, Tumble dry low, Medium iron, Do not dry clean, Wash inside out with like colors. Do not iron on label/print",
     price: "1499",
+    productType: "T shirts",
   },
   {
     slug: "tshirts-van-heusen-reg-fit2",
@@ -49,6 +54,7 @@ export const tShirts = [
     description:
       "Care Instructions: Hand Wash OnlyFit Type: Regular FitStyle Number - 3911Regular fit Polo neck with half sleeves Authentic Jockey logo on the chest Label free for all day comfort This product comes with a variety of logo designs. Image shown here is for representation only. Actual logo design may vary. Wash care Instruction : Gentle wash 40 Degree, Do not bleach, Do not wring, Tumble dry low, Medium iron, Do not dry clean, Wash inside out with like colors. Do not iron on label/print",
     price: "2499",
+    productType: "T shirts",
   },
   {
     slug: "jokey-39119",
@@ -58,6 +64,7 @@ export const tShirts = [
     description:
       "Care Instructions: Hand Wash OnlyFit Type: Regular FitStyle Number - 3911Regular fit Polo neck with half sleeves Authentic Jockey logo on the chest Label free for all day comfort This product comes with a variety of logo designs. Image shown here is for representation only. Actual logo design may vary. Wash care Instruction : Gentle wash 40 Degree, Do not bleach, Do not wring, Tumble dry low, Medium iron, Do not dry clean, Wash inside out with like colors. Do not iron on label/print",
     price: "1499",
+    productType: "T shirts",
   },
   {
     slug: "tshirts-van-heusen-reg-fit9",
@@ -66,6 +73,7 @@ export const tShirts = [
     description:
       "Care Instructions: Hand Wash OnlyFit Type: Regular FitStyle Number - 3911Regular fit Polo neck with half sleeves Authentic Jockey logo on the chest Label free for all day comfort This product comes with a variety of logo designs. Image shown here is for representation only. Actual logo design may vary. Wash care Instruction : Gentle wash 40 Degree, Do not bleach, Do not wring, Tumble dry low, Medium iron, Do not dry clean, Wash inside out with like colors. Do not iron on label/print",
     price: "2499",
+    productType: "T shirts",
   },
   {
     slug: "jokey-3911199",
@@ -75,6 +83,7 @@ export const tShirts = [
     description:
       "Care Instructions: Hand Wash OnlyFit Type: Regular FitStyle Number - 3911Regular fit Polo neck with half sleeves Authentic Jockey logo on the chest Label free for all day comfort This product comes with a variety of logo designs. Image shown here is for representation only. Actual logo design may vary. Wash care Instruction : Gentle wash 40 Degree, Do not bleach, Do not wring, Tumble dry low, Medium iron, Do not dry clean, Wash inside out with like colors. Do not iron on label/print",
     price: "499",
+    productType: "T shirts",
   },
   {
     slug: "tshirts-van-heusen-reg-fit199",
@@ -83,6 +92,7 @@ export const tShirts = [
     description:
       "Care Instructions: Hand Wash OnlyFit Type: Regular FitStyle Number - 3911Regular fit Polo neck with half sleeves Authentic Jockey logo on the chest Label free for all day comfort This product comes with a variety of logo designs. Image shown here is for representation only. Actual logo design may vary. Wash care Instruction : Gentle wash 40 Degree, Do not bleach, Do not wring, Tumble dry low, Medium iron, Do not dry clean, Wash inside out with like colors. Do not iron on label/print",
     price: "2099",
+    productType: "T shirts",
   },
   {
     slug: "jokey-3911288",
@@ -92,6 +102,7 @@ export const tShirts = [
     description:
       "Care Instructions: Hand Wash OnlyFit Type: Regular FitStyle Number - 3911Regular fit Polo neck with half sleeves Authentic Jockey logo on the chest Label free for all day comfort This product comes with a variety of logo designs. Image shown here is for representation only. Actual logo design may vary. Wash care Instruction : Gentle wash 40 Degree, Do not bleach, Do not wring, Tumble dry low, Medium iron, Do not dry clean, Wash inside out with like colors. Do not iron on label/print",
     price: "1499",
+    productType: "T shirts",
   },
   {
     slug: "tshirts-van-heusen-reg-fit28877",
@@ -100,5 +111,6 @@ export const tShirts = [
     description:
       "Care Instructions: Hand Wash OnlyFit Type: Regular FitStyle Number - 3911Regular fit Polo neck with half sleeves Authentic Jockey logo on the chest Label free for all day comfort This product comes with a variety of logo designs. Image shown here is for representation only. Actual logo design may vary. Wash care Instruction : Gentle wash 40 Degree, Do not bleach, Do not wring, Tumble dry low, Medium iron, Do not dry clean, Wash inside out with like colors. Do not iron on label/print",
     price: "2499",
+    productType: "T shirts",
   },
 ];

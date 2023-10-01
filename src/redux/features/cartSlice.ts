@@ -1,4 +1,10 @@
-import { getCartFromLocalStorage, removeCartFromLocalStorage, setCartToLocalStorage } from "@/utils/localStorage";
+"use client";
+import { tShirts } from "@/data/data";
+import {
+  getCartFromLocalStorage,
+  removeCartFromLocalStorage,
+  setCartToLocalStorage,
+} from "@/utils/localStorage";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type CartItemProps = {
@@ -8,11 +14,13 @@ export type CartItemProps = {
 type CartProps = {
   isOpen: boolean;
   cartItems: CartItemProps[];
+  subTotal: number;
 };
 
 const initialState = {
   isOpen: false,
   cartItems: getCartFromLocalStorage(),
+  subTotal: 0,
 } as CartProps;
 
 export const cart = createSlice({
@@ -56,6 +64,14 @@ export const cart = createSlice({
       }
       setCartToLocalStorage(state.cartItems);
     },
+    getSubTotal: (state) => {
+      state.subTotal = state.cartItems.reduce((total, cartItem) => {
+        const currentItem = tShirts.find(
+          (item) => item.slug === cartItem.productId
+        );
+        return total + parseFloat(currentItem?.price || "0") * cartItem.amount;
+      }, 0);
+    },
   },
 });
 
@@ -65,5 +81,6 @@ export const {
   removeFromCart,
   clearCart,
   decreaseQuantity,
+  getSubTotal
 } = cart.actions;
 export default cart.reducer;
