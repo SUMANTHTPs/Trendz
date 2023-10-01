@@ -8,7 +8,8 @@ import { useDispatch } from 'react-redux';
 import { toggleCartModel } from '@/redux/features/cartSlice';
 
 const Navbar = () => {
-  const { isOpen } = useAppSelector((store) => store.CartReducer)
+  const { cartItems } = useAppSelector((store) => store.CartReducer)
+  let totalItems = cartItems.reduce((total, item) => total + item.amount, 0)
   const dispatch = useDispatch<AppDispatch>();
   return (
     <div className='sticky top-0 z-50  bg-white' >
@@ -22,8 +23,9 @@ const Navbar = () => {
             <Link href={"/mugs"}><li>Mugs</li></Link>
           </ul>
         </div>
-        <div className="cart" onClick={() => dispatch(toggleCartModel())}>
-          <img src={icons.cart} />
+        <div className="cart relative" onClick={() => dispatch(toggleCartModel())}>
+          <img className='w-10 h-8' src={icons.cart} />
+          <p className='absolute flex items-center justify-center rounded-full bg-blue-800 text-white w-1 h-1 p-2 -top-1 -right-0 text-xs'>{totalItems}</p>
         </div>
       </div>
       <Cart />
