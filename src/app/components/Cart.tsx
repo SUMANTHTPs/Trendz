@@ -10,7 +10,7 @@ import EmptyCart from "./EmptyCart";
 
 
 function Cart() {
-    const { isOpen, cartItems } = useAppSelector((store) => store.CartReducer)
+    const { isOpen, cartItems, subTotal } = useAppSelector((store) => store.CartReducer)
     const dispatch = useDispatch<AppDispatch>();
 
     React.useEffect(() => {
@@ -28,7 +28,8 @@ function Cart() {
                         <CartItem key={item.productId} cartItem={item} />
                     )
                 })}
-                {cartItems.length === 0 && <EmptyCart />}
+                {!cartItems.length && <EmptyCart />}
+                {!!cartItems.length && <p className="flex items-center justify-start mx-3 p-2">{`Total amount (Including tax): ${subTotal}`}</p>}
                 <div className="fixed bottom-0 flex gap-3 p-2 mx-6">
                     <button className='bg-blue-900 w-[40vw] md:w-[13vw] text-white flex items-center justify-center gap-2 p-2 py-3 rounded-lg ' onClick={() => dispatch(clearCart())}>
                         Clear
