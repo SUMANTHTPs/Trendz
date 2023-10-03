@@ -12,7 +12,7 @@ const Navbar = () => {
   let totalItems = cartItems.reduce((total, item) => total + item.amount, 0)
   const dispatch = useDispatch<AppDispatch>();
   return (
-    <div className='sticky top-0 z-50  bg-white' >
+    <div className='sticky top-0 bg-white' >
       <div className="flex flex-row p-3 justify-between items-center shadow-lg my-2">
         <div className="nav flex flex-col md:flex-row gap-5 font-bold justify-center items-start">
           <Logo />

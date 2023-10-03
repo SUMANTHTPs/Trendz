@@ -6,6 +6,7 @@ import CartItem from "./cartItem";
 import React from "react";
 import EmptyCart from "./EmptyCart";
 import Link from "next/link"
+import CanvasOverLay from "./CanvasOverLay";
 
 function Cart() {
     const { isOpen, cartItems, subTotal } = useAppSelector((store) => store.CartReducer);
@@ -17,6 +18,7 @@ function Cart() {
 
     return (
         <>
+            {isOpen && <CanvasOverLay/>}
             {isOpen && (<div
                 className={`fixed right-0 top-0 bg-white w-full sm:w-full md:w-[30vw] h-[100vh] transition-transform transform translate-x-${isOpen ? '0' : 'full'
                     } ease-in-out`}
