@@ -1,10 +1,12 @@
-"use client";
 import React from 'react'
 import { tShirts } from "@/data/data"
 import ProductTile from '../components/ProductTile'
+import mongoose from 'mongoose'
+import Product from '@/models/Product'
 
 
-function TShirts() {
+function TShirts({ products }: any) {
+  console.log(products)
   let shirts = tShirts.filter((shirt) => shirt.productType === "T shirts")
   return (
     <section className="text-gray-600 body-font">
@@ -20,5 +22,33 @@ function TShirts() {
     </section>
   )
 }
+
+// export async function getServerSideProps(context: any) {
+//   if (!mongoose.connections[0].readyState) {
+//     await mongoose.connect(process.env.MONGO_URI!)
+//   }
+//   let products = await Product.find({ category: "tshirts" })
+//   let tShirts: any = {};
+//   for (let item of products) {
+//     const { title, color, size, availableQuantity } = item;
+//     if (title in tShirts) {
+//       if (!tShirts[title].color.includes(color) && availableQuantity > 0) {
+//         tShirts[title].color.push(color);
+//       }
+//       if (!tShirts[title].size.includes(size) && availableQuantity > 0) {
+//         tShirts[title].size.push(size);
+//       }
+//     } else {
+//       tShirts[title] = JSON.parse(JSON.stringify(item));
+//       if (availableQuantity > 0) {
+//         tShirts[title].color = [color];
+//         tShirts[title].size = [size];
+//       }
+//     }
+//   }
+//   return {
+//     props: { products: JSON.parse(JSON.stringify(tShirts)) }
+//   }
+// }
 
 export default TShirts
