@@ -8,6 +8,7 @@ import {
 } from "@reduxjs/toolkit";
 
 const initialState = {
+  products: [],
   tShirts: [],
   hoodies: [],
 };
@@ -23,6 +24,7 @@ export const product = createSlice({
     builder
       .addCase(getProduct.fulfilled, (state, action) => {
         state.tShirts = action.payload.tShirts;
+        state.products = action.payload.products;
       })
       .addCase(getProduct.rejected, () => {
         console.log("Failed to fetch data");

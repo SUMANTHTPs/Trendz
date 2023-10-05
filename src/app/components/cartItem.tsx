@@ -4,13 +4,14 @@ import { useDispatch } from 'react-redux';
 import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai';
 import { addToCart, decreaseQuantity } from '@/redux/features/cartSlice';
 import { tShirts } from '@/data/data';
+import { useAppSelector } from '@/redux/store';
 
 function CartItem({ cartItem }: any) {
     const { productId, amount } = cartItem;
     const dispatch = useDispatch();
 
-    // Find the matching item details
-    const matchingItem = tShirts.find(item => item.slug === productId);
+    const { products } = useAppSelector<{ products: any[] }>((store) => store.productReducer); 
+    const matchingItem = products.find(item => item.slug === productId );
 
     return (
         <div className="flex p-2 border-b border-gray-200">

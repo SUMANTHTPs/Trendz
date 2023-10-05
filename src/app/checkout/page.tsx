@@ -1,17 +1,16 @@
 "use client";
 import React from 'react'
 import CartItem from '../components/cartItem';
-import { tShirts } from '@/data/data';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '@/redux/store';
 
 function CheckoutPage() {
   const { cartItems, subTotal } = useAppSelector((store) => store.CartReducer);
-  const dispatch = useDispatch();
+  const { products } = useAppSelector<{ products: any[] }>((store) => store.productReducer);
 
   // Find the matching item details
   const matchingCartItems = cartItems.filter((cartItem) => {
-    const matchingTShirt = tShirts.find((tShirt) => tShirt.slug === cartItem.productId);
+    const matchingTShirt = products.find((product) => product.slug === cartItem.productId);
     return matchingTShirt !== undefined;
   });
   return (

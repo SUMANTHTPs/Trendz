@@ -6,7 +6,7 @@ connect();
 
 export async function GET(request: NextRequest) {
   try {
-    let products = await Product.find();
+    let products = await Product.find({ category: "tshirts" });
     let tShirts: any = {};
 
     for (let item of products) {
@@ -26,8 +26,8 @@ export async function GET(request: NextRequest) {
         }
       }
     }
-
-    return NextResponse.json({ status: 200, tShirts });
+    products = await Product.find();
+    return NextResponse.json({ status: 200, tShirts, products });
   } catch (error: any) {
     return NextResponse.json({
       status: 500,
