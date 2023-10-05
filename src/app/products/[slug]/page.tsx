@@ -1,20 +1,21 @@
 "use client";
-import { tShirts } from "@/data/data";
 import { addToCart } from "@/redux/features/cartSlice";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import React from "react"
-import { AppDispatch } from "@/redux/store";
+import { AppDispatch, useAppSelector } from "@/redux/store";
 
 export default function Product({ params }: ProductProps) {
-
+    // Redux states
+    const { tShirts } = useAppSelector(store => store.productReducer);
     const dispatch = useDispatch<AppDispatch>();
-
+    const shirtArray = Object.values(tShirts);
+    
     // Initial states
     const [pinCode, setPinCode] = React.useState("")
     const [serviceable, setServiceable] = React.useState(null)
     const productId = params.slug;
-    const product = tShirts.find((shirt) => shirt.slug === productId)
+    const product: any = shirtArray.find((shirt: any) => shirt.slug === productId)
 
     const checkServiceability = async () => {
         try {
