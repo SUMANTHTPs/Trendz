@@ -14,13 +14,13 @@ function TShirts() {
     dispatch(getProduct());
   }, []);
   
-  const shirtArray = Object.values(tShirts);
+  const shirtArray = Object?.values(tShirts);
 
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24">
         <div className="flex flex-wrap -m-4 gap-5 justify-center">
-          {shirtArray.map((shirt: any) => {
+          {shirtArray?.map((shirt: any) => {
             return (
               <ProductTile key={shirt.slug} product={shirt} />
             )

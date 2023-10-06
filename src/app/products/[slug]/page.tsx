@@ -9,13 +9,13 @@ export default function Product({ params }: ProductProps) {
     // Redux states
     const { tShirts } = useAppSelector(store => store.productReducer);
     const dispatch = useDispatch<AppDispatch>();
-    const shirtArray = Object.values(tShirts);
+    const shirtArray = Object?.values(tShirts);
     
     // Initial states
     const [pinCode, setPinCode] = React.useState("")
     const [serviceable, setServiceable] = React.useState(null)
     const productId = params.slug;
-    const product: any = shirtArray.find((shirt: any) => shirt.slug === productId)
+    const product: any = shirtArray?.find((shirt: any) => shirt.slug === productId)
 
     const checkServiceability = async () => {
         try {
