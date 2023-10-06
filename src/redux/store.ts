@@ -13,8 +13,7 @@ const rootReducer = combineReducers({
 
 const persistConfig = {
   key: "root",
-  storage: localforage,
-  throttle: 50,
+  storage
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
