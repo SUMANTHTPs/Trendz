@@ -60,7 +60,7 @@ export const cart = createSlice({
         const currentItem = products.find(
           (item: { slug: string; }) => item.slug === cartItem.productId
         );
-        return total + currentItem.price * cartItem.amount;
+        return Number((total + currentItem.price * cartItem.amount).toFixed(2));
       }, 0);
     },
   },
