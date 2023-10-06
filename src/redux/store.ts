@@ -4,15 +4,17 @@ import productReducer from "./features/productSlice";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import localforage from "localforage";
 
 const rootReducer = combineReducers({
-    cart : CartReducer,
-    product : productReducer,
-  })
+  cart: CartReducer,
+  product: productReducer,
+});
 
 const persistConfig = {
   key: "root",
-  storage,
+  storage: localforage,
+  throttle: 50,
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
