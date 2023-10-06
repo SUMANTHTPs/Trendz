@@ -1,5 +1,4 @@
 "use client";
-import { tShirts } from "@/data/data";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type CartItemProps = {
@@ -55,12 +54,13 @@ export const cart = createSlice({
         );
       }
     },
-    getSubTotal: (state) => {
+    getSubTotal: (state, { payload }) => {
+      const products = payload;
       state.subTotal = state.cartItems.reduce((total, cartItem) => {
-        const currentItem = tShirts.find(
-          (item) => item.slug === cartItem.productId
+        const currentItem = products.find(
+          (item: { slug: string; }) => item.slug === cartItem.productId
         );
-        return total + parseFloat(currentItem?.price || "0") * cartItem.amount;
+        return total + currentItem.price * cartItem.amount;
       }, 0);
     },
   },
@@ -72,6 +72,6 @@ export const {
   removeFromCart,
   clearCart,
   decreaseQuantity,
-  getSubTotal
+  getSubTotal,
 } = cart.actions;
 export default cart.reducer;

@@ -10,10 +10,11 @@ import CanvasOverLay from "./CanvasOverLay";
 
 function Cart() {
     const { isOpen, cartItems, subTotal } = useAppSelector((store) => store.cart);
+    const { products } = useAppSelector((store) => store.product);
     const dispatch = useDispatch<AppDispatch>();
 
     React.useEffect(() => {
-        dispatch(getSubTotal());
+        dispatch(getSubTotal(products));
     }, [cartItems]);
 
     return (
