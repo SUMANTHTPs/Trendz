@@ -1,10 +1,5 @@
 "use client";
 import { tShirts } from "@/data/data";
-import {
-  getCartFromLocalStorage,
-  removeCartFromLocalStorage,
-  setCartToLocalStorage,
-} from "@/utils/localStorage";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type CartItemProps = {
@@ -19,7 +14,7 @@ type CartProps = {
 
 const initialState = {
   isOpen: false,
-  cartItems: getCartFromLocalStorage(),
+  cartItems: [],
   subTotal: 0,
 } as CartProps;
 
@@ -39,17 +34,14 @@ export const cart = createSlice({
       } else {
         existingItem.amount += 1;
       }
-      setCartToLocalStorage(state.cartItems);
     },
     removeFromCart: (state, action) => {
       state.cartItems = state.cartItems.filter(
         (item) => item.productId !== action.payload
       );
-      setCartToLocalStorage(state.cartItems);
     },
     clearCart: (state) => {
       state.cartItems = [];
-      removeCartFromLocalStorage();
     },
     decreaseQuantity: (state, { payload }) => {
       const existingItem = state.cartItems.find(
@@ -62,7 +54,6 @@ export const cart = createSlice({
           (item) => item.productId !== existingItem.productId
         );
       }
-      setCartToLocalStorage(state.cartItems);
     },
     getSubTotal: (state) => {
       state.subTotal = state.cartItems.reduce((total, cartItem) => {
