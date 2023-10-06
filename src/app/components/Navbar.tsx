@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { toggleCartModel } from '@/redux/features/cartSlice';
 
 const Navbar = () => {
-  const { cartItems } = useAppSelector((store) => store.CartReducer)
+  const { cartItems } = useAppSelector((store) => store.cart)
   let totalItems = cartItems.reduce((total, item) => total + item.amount, 0)
   const dispatch = useDispatch<AppDispatch>();
   return (

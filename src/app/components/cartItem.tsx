@@ -10,7 +10,7 @@ function CartItem({ cartItem }: any) {
     const { productId, amount } = cartItem;
     const dispatch = useDispatch();
 
-    const { products } = useAppSelector<{ products: any[] }>((store) => store.productReducer); 
+    const { products } = useAppSelector<{ products: any[] }>((store) => store.product); 
     const matchingItem = products.find(item => item.slug === productId );
 
     return (

@@ -8,7 +8,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { useAppSelector } from '@/redux/store';
 
 function TShirts() {
-  const { tShirts } = useAppSelector(store => store.productReducer);
+  const { tShirts } = useAppSelector(store => store.product);
   const dispatch: ThunkDispatch<any, any, any> = useDispatch();
   useEffect(() => {
     dispatch(getProduct());

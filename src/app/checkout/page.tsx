@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux';
 import { useAppSelector } from '@/redux/store';
 
 function CheckoutPage() {
-  const { cartItems, subTotal } = useAppSelector((store) => store.CartReducer);
-  const { products } = useAppSelector<{ products: any[] }>((store) => store.productReducer);
+  const { cartItems, subTotal } = useAppSelector((store) => store.cart);
+  const { products } = useAppSelector<{ products: any[] }>((store) => store.product);
 
   // Find the matching item details
   const matchingCartItems = cartItems.filter((cartItem) => {

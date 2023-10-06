@@ -9,7 +9,7 @@ import Link from "next/link"
 import CanvasOverLay from "./CanvasOverLay";
 
 function Cart() {
-    const { isOpen, cartItems, subTotal } = useAppSelector((store) => store.CartReducer);
+    const { isOpen, cartItems, subTotal } = useAppSelector((store) => store.cart);
     const dispatch = useDispatch<AppDispatch>();
 
     React.useEffect(() => {

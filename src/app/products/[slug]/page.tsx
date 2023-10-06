@@ -7,7 +7,7 @@ import { AppDispatch, useAppSelector } from "@/redux/store";
 
 export default function Product({ params }: ProductProps) {
     // Redux states
-    const { tShirts } = useAppSelector(store => store.productReducer);
+    const { tShirts } = useAppSelector(store => store.product);
     const dispatch = useDispatch<AppDispatch>();
     const shirtArray = Object?.values(tShirts);
     
