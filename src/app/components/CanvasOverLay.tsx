@@ -20,7 +20,7 @@ function CanvasOverLay() {
             height:'110vh',
             background: 'rgba(255, 255, 255, 0.8)',
         }}
-        className='w-0 md:w-[90vw]'
+        className='w-0 md:w-full'
     />
   )
 }

@@ -26,9 +26,7 @@ export default function Cart() {
       {isOpen && <CanvasOverLay />}
       {isOpen && (
         <div
-          className={`fixed right-0 top-0 bg-white w-full sm:w-full md:w-[30vw] h-[100vh] transition-transform transform translate-x-${
-            isOpen ? "0" : "full"
-          } ease-in-out`}
+          className={`fixed right-0 top-0 bg-white w-full sm:w-full md:w-[30vw] h-[100vh]`}
         >
           <div className="flex justify-between items-center">
             <h1 className="p-5 text-2xl">Your cart items</h1>
