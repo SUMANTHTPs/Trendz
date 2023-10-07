@@ -9,7 +9,7 @@ function ProductTile({ product }: any) {
     return (
         <div className="lg:w-1/5 md:w-1/3 p-4 w-full border border-gray-200 rounded-lg hover:shadow-lg hover:border-gray-300">
             <Link href={productURL} className="block h-80 rounded overflow-hidden">
-                <img alt={title} className="object-cover object-center w-full block" src={img} />
+                <img alt={title} className="object-cover object-center w-full block transition-transform transform hover:scale-105" src={img} />
             </Link>
             <div className="mt-4">
                 <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">{productType}</h3>
