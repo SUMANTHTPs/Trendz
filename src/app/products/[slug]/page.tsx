@@ -7,15 +7,14 @@ import { AppDispatch, useAppSelector } from "@/redux/store";
 
 export default function Product({ params }: ProductProps) {
     // Redux states
-    const { tShirts } = useAppSelector(store => store.product);
+    const { products } = useAppSelector(store => store.product);
     const dispatch = useDispatch<AppDispatch>();
-    const shirtArray = Object?.values(tShirts);
     
     // Initial states
     const [pinCode, setPinCode] = React.useState("")
     const [serviceable, setServiceable] = React.useState(null)
-    const productId = params.slug;
-    const product: any = shirtArray?.find((shirt: any) => shirt.slug === productId)
+    const productIdParam = params.slug;
+    const product: any = products?.find((product: any) => product.slug === productIdParam)
 
     const checkServiceability = async () => {
         try {
@@ -34,7 +33,7 @@ export default function Product({ params }: ProductProps) {
         <section className="text-gray-600 body-font overflow-hidden">
             <div className="container px-5 py-24 mx-auto">
                 <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                    <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto object-cover object-center rounded" src={product?.img} />
+                    <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto object-cover object-center rounded hover:p-2" src={product?.img} />
                     <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                         <h2 className="text-sm title-font text-gray-500 tracking-widest">TRENDZ</h2>
                         <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{product?.title}</h1>
@@ -86,7 +85,7 @@ export default function Product({ params }: ProductProps) {
                         <div className="flex justify-between">
                             <span className="title-font font-medium text-2xl text-gray-900">₹{product?.price} /-</span>
                             <div className="flex gap-3">
-                                <button className="flex  text-white bg-blue-900 border-0 py-2 px-6 focus:outline-none hover:bg-blue-700 rounded" onClick={() => dispatch(addToCart(productId))}>Add to cart</button>
+                                <button className="flex  text-white bg-blue-900 border-0 py-2 px-6 focus:outline-none hover:bg-blue-700 rounded" onClick={() => dispatch(addToCart(productIdParam))}>Add to cart</button>
                                 <button className="flex  text-white bg-blue-900 border-0 py-2 px-6 focus:outline-none hover:bg-blue-700 rounded">Buy now</button>
                                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500">
                                     <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
