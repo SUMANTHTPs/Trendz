@@ -1,33 +1,16 @@
 import { connect } from "@/dbConfig/dbConfig";
 import Product from "@/models/Product";
 import { NextRequest, NextResponse } from "next/server";
+import { getProducts } from "../utils";
 
 connect();
 
 export async function GET(request: NextRequest) {
   try {
-    let products = await Product.find({ category: "tshirts" });
-    let tShirts: any = {};
-
-    for (let item of products) {
-      const { title, color, size, availableQuantity } = item;
-      if (title in tShirts) {
-        if (!tShirts[title].color.includes(color) && availableQuantity > 0) {
-          tShirts[title].color.push(color);
-        }
-        if (!tShirts[title].size.includes(size) && availableQuantity > 0) {
-          tShirts[title].size.push(size);
-        }
-      } else {
-        tShirts[title] = JSON.parse(JSON.stringify(item));
-        if (availableQuantity > 0) {
-          tShirts[title].color = [color];
-          tShirts[title].size = [size];
-        }
-      }
-    }
-    products = await Product.find();
-    return NextResponse.json({ status: 200, tShirts, products });
+    const products = await Product.find();
+    const tShirts = await getProducts("tshirts");
+    const hoodies = await getProducts("hoodies");
+    return NextResponse.json({ status: 200, tShirts, hoodies, products });
   } catch (error: any) {
     return NextResponse.json({
       status: 500,
