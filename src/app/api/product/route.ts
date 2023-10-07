@@ -40,28 +40,12 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const requestBody = await request.json();
-    const similarProductExists = await Product.findOne({
-      slug: requestBody.slug,
-    });
 
-    if (similarProductExists) {
-      return NextResponse.json({
-        status: 401,
-        message: "slug should be unique",
-      });
+    if (!Array.isArray(requestBody)) {
+      return NextResponse.json({ status: 400, error: "Invalid request body" });
     }
-    let newProduct = new Product({
-      title: requestBody.title,
-      slug: requestBody.slug,
-      description: requestBody.description,
-      img: requestBody.img,
-      category: requestBody.category,
-      size: requestBody.size,
-      color: requestBody.color,
-      price: requestBody.price,
-      availableQuantity: requestBody.availableQuantity,
-    });
-    await newProduct.save();
+    await Product.insertMany(requestBody);
+
     return NextResponse.json({ status: 200, success: true });
   } catch (error) {
     return NextResponse.json({
