@@ -17,9 +17,8 @@ const Navbar = () => {
         <div className="nav flex flex-col md:flex-row gap-5 font-bold justify-center items-start">
           <Logo />
           <ul className="flex gap-2 items-center justify-center p-2">
+            <Link href={"/tshirts"}><li>T-Shirts</li></Link>
             <Link href={"/hoodies"}><li>Hoodies</li></Link>
-            <Link href={"/tshirts"}><li>T-shirts</li></Link>
-            <Link href={"/stickers"}><li>Stickers</li></Link>
             <Link href={"/mugs"}><li>Mugs</li></Link>
           </ul>
         </div>

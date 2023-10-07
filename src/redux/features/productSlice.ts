@@ -11,6 +11,7 @@ const initialState = {
   products: [],
   tShirts: [],
   hoodies: [],
+  mugs: [],
 };
 export const product = createSlice({
   name: "product",
@@ -25,6 +26,8 @@ export const product = createSlice({
       .addCase(getProduct.fulfilled, (state, action) => {
         state.tShirts = action.payload.tShirts;
         state.products = action.payload.products;
+        state.hoodies = action.payload.hoodies;
+        state.mugs = action.payload.mugs;
       })
       .addCase(getProduct.rejected, () => {
         console.log("Failed to fetch data");

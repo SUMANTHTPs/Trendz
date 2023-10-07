@@ -10,7 +10,8 @@ export async function GET(request: NextRequest) {
     const products = await Product.find();
     const tShirts = await getProducts("tshirts");
     const hoodies = await getProducts("hoodies");
-    return NextResponse.json({ status: 200, tShirts, hoodies, products });
+    const mugs = await getProducts("mugs");
+    return NextResponse.json({ status: 200, tShirts, hoodies, mugs, products });
   } catch (error: any) {
     return NextResponse.json({
       status: 500,
