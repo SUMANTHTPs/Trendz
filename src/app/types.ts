@@ -1,3 +1,4 @@
+
 type ProductProps = {
   params: {
     slug: string;
@@ -9,5 +10,7 @@ type ProductTileProps = {
   img: string;
   title: string;
   description: string;
-  price: string
+  price: string;
 };
+
+
