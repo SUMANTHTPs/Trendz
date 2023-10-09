@@ -28,7 +28,7 @@
 }
 
 .banner-icons:hover {
-  animation: squish 200ms ease-in-out;
+  animation: squish 300ms ease-in-out;
 }
 
 @keyframes squish {

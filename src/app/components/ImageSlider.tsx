@@ -13,6 +13,16 @@ function ImageSlider({ imageUrls }: ImageSliderProps) {
     const handleNext = () => {
         setImgIndex((prevIndex) => (prevIndex + 1) % imageUrls.length);
     };
+
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            handleNext();
+        }, 2000)
+
+        return () => {
+            clearInterval(interval)
+        }
+    }, [])
     return (
         <section className='w-full h-full relative'>
             <div style={{ width: "100%", height: "100%", display: "flex", overflow: "hidden" }}>
@@ -45,7 +55,7 @@ function ImageSlider({ imageUrls }: ImageSliderProps) {
                 }}
             >
                 {imageUrls.map((_, index) => (
-                    <button key={index} className={`flex w-2 h-2 bg-white rounded  ${index === imgIndex && "bg-gray-600 border border-white scale-105"}`} onClick={() => setImgIndex(index)}></button>
+                    <button key={index} className={`flex w-2 h-2 bg-white rounded hover:scale-125 ${index === imgIndex && "bg-gray-700 border border-white scale-125"}`} onClick={() => setImgIndex(index)}></button>
                 ))}
             </div>
         </section>
