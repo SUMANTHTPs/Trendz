@@ -8,16 +8,13 @@ type ImageSliderProps = {
 function ImageSlider({ imageUrls }: ImageSliderProps) {
     const [imgIndex, setImgIndex] = React.useState(0)
     const handlePrev = () => {
-        setImgIndex(prevState => {
-            if ((prevState - 1) < 0) return imageUrls.length - 1
-            return prevState - 1
-        })
-    }
+        setImgIndex((prevIndex) => (prevIndex - 1 + imageUrls.length) % imageUrls.length);
+    };
     const handleNext = () => {
-        setImgIndex(prevState => (Math.abs(prevState + 1)) % imageUrls.length)
-    }
+        setImgIndex((prevIndex) => (prevIndex + 1) % imageUrls.length);
+    };
     return (
-        <div className='w-full h-full relative'>
+        <section className='w-full h-full relative'>
             <div style={{ width: "100%", height: "100%", display: "flex", overflow: "hidden" }}>
                 {imageUrls.map(url => (
                     <Image key={url.blurDataURL} style={{
@@ -51,7 +48,7 @@ function ImageSlider({ imageUrls }: ImageSliderProps) {
                     <button key={index} className={`flex w-2 h-2 bg-white rounded  ${index === imgIndex && "bg-gray-600 border border-white scale-105"}`} onClick={() => setImgIndex(index)}></button>
                 ))}
             </div>
-        </div>
+        </section>
     )
 }
 
