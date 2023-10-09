@@ -16,10 +16,11 @@ const Navbar = () => {
       <div className="flex flex-row p-3 justify-between items-center shadow-lg my-2">
         <div className="nav flex flex-col md:flex-row gap-5 font-bold justify-center items-start">
           <Logo />
-          <ul className="flex gap-2 items-center justify-center p-2">
-            <Link href={"/tshirts"}><li>T-Shirts</li></Link>
-            <Link href={"/hoodies"}><li>Hoodies</li></Link>
-            <Link href={"/mugs"}><li>Mugs</li></Link>
+          <ul className="flex gap-3 items-center justify-center p-2">
+            <Link href={"/tshirts"}><li className='capitalize'>t-shirts</li></Link>
+            <Link href={"/hoodies"}><li className='capitalize'>hoodies</li></Link>
+            <Link href={"/mugs"}><li className='capitalize'>mugs</li></Link>
+            <Link href={"/caps"}><li className='capitalize'>caps</li></Link>
           </ul>
         </div>
         <div className="cart relative" onClick={() => dispatch(toggleCartModel())}>

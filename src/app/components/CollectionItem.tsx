@@ -9,13 +9,10 @@ export type CollectionProps = {
 
 function CollectionItem({ img, link, text }: CollectionProps) {
     return (
-        <div className='flex flex-col items-center justify-center w-full md:w-[45vw] rounded-2xl'>
+        <div className='flex flex-col items-center justify-center w-full md:w-[40vw]'>
             <Link href={link}>
-                <div className="relative">
-                    <img style={{height: "500px"}} className='w-[100vw]' src={img} alt={`${text}-collection-image`} />
-                    <p className="absolute bottom-0 left-0 right-0 text-center bg-gray-400 text-white p-2">
-                        {text}
-                    </p>
+                <div className="collections-container relative rounded-lg border border-gray-300 transform hover:scale-105 transition-transform duration-300">
+                    <img style={{ height: "500px" }} className='w-[100vw] rounded-lg' src={img} alt={`${text}-collection-image`} />
                 </div>
             </Link>
         </div>

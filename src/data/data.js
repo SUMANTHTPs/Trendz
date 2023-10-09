@@ -1,11 +1,11 @@
 export const collectionItems = [
   {
-    img: "https://m.media-amazon.com/images/I/51HfQ4-xkhL._SX522_.jpg",
+    img: "https://codeswear.nyc3.cdn.digitaloceanspaces.com/constants/landing/collections/mugs.webp",
     link: "/mugs",
     text: "mugs",
   },
   {
-    img: "https://m.media-amazon.com/images/I/71cJON+VFVL._UX569_.jpg",
+    img: "https://codeswear.nyc3.cdn.digitaloceanspaces.com/constants/landing/collections/hoodie.webp",
     link: "/hoodies",
     text: "hoodies",
   },
