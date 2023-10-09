@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import React from "react"
 import { AppDispatch, useAppSelector } from "@/redux/store";
+import SizeOptions from "@/app/components/SizeOptions";
+import ColorOptions from "@/app/components/ColorOptions";
 
 export default function Product({ params }: ProductProps) {
     // Redux states
@@ -72,27 +74,12 @@ export default function Product({ params }: ProductProps) {
                         <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                             <div className="flex">
                                 <span className="mr-3">Color</span>
-                                {product.color.map((color: string) => (
-                                    <button
-                                        key={color}
-                                        style={{ backgroundColor: color }}
-                                        className="border-2 border-gray-300 ml-1 rounded-full w-6 h-6 focus:outline-none"
-                                    ></button>
-                                ))}
+                                <ColorOptions product={product} />
                             </div>
 
                             <div className="flex ml-6 items-center">
                                 <span className="mr-3">Size</span>
-                                <div className="flex gap-1">
-                                    {product.size.map((size: string) => (
-                                        <button
-                                            key={size}
-                                            className="border-2 border-gray-300 ml-1 w-6 h-6 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 p-2 px-4 flex items-center justify-center"
-                                        >
-                                            {size}
-                                        </button>
-                                    ))}
-                                </div>
+                                <SizeOptions product={product}/>
                             </div>
                         </div>
                         <div className="flex justify-between">
