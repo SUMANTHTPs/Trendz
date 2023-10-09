@@ -10,7 +10,7 @@ import ImageSlider from './ImageSlider'
 const banners = [banner1, banner2, banner3, banner4, banner5]
 function Banner() {
     return (
-        <div style={{maxWidth: "1600px", width: "100%", height: "600px", margin: "0 auto"}}>
+        <div style={{maxWidth: "1600px", width: "100%", height: "650px", margin: "0 auto"}}>
             <ImageSlider imageUrls={banners}/>
         </div>
     )
