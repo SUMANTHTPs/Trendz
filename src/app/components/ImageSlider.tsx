@@ -30,7 +30,7 @@ function ImageSlider({ imageUrls }: ImageSliderProps) {
                     <Image key={url.blurDataURL} style={{
                         translate: `${-100 * imgIndex}%`
                     }}
-                        className='object-cover w-full h-full block flex-shrink-0 flex-grow-0 banner-img'
+                        className='object-fit w-full h-[85vh] md:h-full block flex-shrink-0 flex-grow-0 banner-img'
                         src={url}
                         width={1000}
                         height={1000}
@@ -51,11 +51,11 @@ function ImageSlider({ imageUrls }: ImageSliderProps) {
                     left: "50%",
                     translate: "-50%",
                     display: "flex",
-                    gap: "0.25rem"
+                    gap: "0.5rem"
                 }}
             >
                 {imageUrls.map((_, index) => (
-                    <button key={index} className={`flex w-2 h-2 bg-white rounded hover:scale-125 ${index === imgIndex && "bg-gray-700 border border-white scale-125"}`} onClick={() => setImgIndex(index)}></button>
+                    <button key={index} className={`flex w-3 h-3 rounded-3xl bg-white hover:scale-125 ${index === imgIndex && "bg-gray-700 border border-white scale-125"}`} onClick={() => setImgIndex(index)}></button>
                 ))}
             </div>
         </section>
