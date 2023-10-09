@@ -9,20 +9,21 @@ function ImageSlider({ imageUrls }: ImageSliderProps) {
     const [imgIndex, setImgIndex] = React.useState(0)
     const handlePrev = () => {
         setImgIndex(prevState => {
-            return (Math.abs(prevState - 1)) % imageUrls.length
+            if ((prevState - 1) < 0) return imageUrls.length - 1
+            return prevState - 1
         })
     }
     const handleNext = () => {
         setImgIndex(prevState => (Math.abs(prevState + 1)) % imageUrls.length)
     }
     return (
-        <div className='w-full h-full'>
-            <Image className='object-cover w-full h-full' src={imageUrls[imgIndex]} width={1000} height={1000} alt='banner images' />
-            <button onClick={handlePrev}>
-                <AiOutlineLeft />
+        <div className='w-full h-full relative'>
+            <Image className='object-cover w-full h-full block' src={imageUrls[imgIndex]} width={1000} height={1000} alt='banner images' />
+            <button className='img-slider-button' onClick={handlePrev}>
+                <AiOutlineLeft fill='white'stroke='black' />
             </button>
-            <button onClick={handleNext}>
-                <AiOutlineRight />
+            <button className='img-slider-button right-0' style={{right: "0"}} onClick={handleNext}>
+                <AiOutlineRight fill='white' stroke='black' />
             </button>
         </div>
     )
