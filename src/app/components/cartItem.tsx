@@ -3,7 +3,6 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai';
 import { addToCart, decreaseQuantity } from '@/redux/features/cartSlice';
-import { tShirts } from '@/data/data';
 import { useAppSelector } from '@/redux/store';
 
 function CartItem({ cartItem }: any) {

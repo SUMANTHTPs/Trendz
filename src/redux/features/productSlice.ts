@@ -1,4 +1,3 @@
-import { tShirts } from "@/data/data";
 import customFetch from "@/utils/axios/axios";
 import {
   ActionCreatorWithPayload,
@@ -12,6 +11,8 @@ const initialState = {
   tShirts: [],
   hoodies: [],
   mugs: [],
+  size: null,
+  color: null,
 };
 export const product = createSlice({
   name: "product",
@@ -19,6 +20,12 @@ export const product = createSlice({
   reducers: {
     setTShirts: (state, action: PayloadAction<any>) => {
       state.tShirts = action.payload;
+    },
+    setSize: (state, action) => {
+      state.size = action.payload;
+    },
+    setColor: (state, action) => {
+      state.color = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -47,3 +54,4 @@ export const getProduct = createAsyncThunk(
   }
 );
 export default product.reducer;
+export const { setColor, setSize } = product.actions;
