@@ -35,6 +35,8 @@ export const product = createSlice({
         state.products = action.payload.products;
         state.hoodies = action.payload.hoodies;
         state.mugs = action.payload.mugs;
+        state.color = null;
+        state.size = null;
       })
       .addCase(getProduct.rejected, () => {
         console.log("Failed to fetch data");
