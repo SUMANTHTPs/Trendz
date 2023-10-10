@@ -1,21 +1,17 @@
 "use client";
+import React from "react"
 import { addToCart } from "@/redux/features/cartSlice";
 import { useDispatch } from "react-redux";
-import axios from "axios";
-import React from "react"
 import { AppDispatch, useAppSelector } from "@/redux/store";
 import SizeOptions from "@/app/components/SizeOptions";
 import ColorOptions from "@/app/components/ColorOptions";
 import Ratings from "@/app/components/Ratings";
+import ServiceabilityCheck from "@/app/components/ServiceabilityCheck";
 
 export default function Product({ params }: ProductProps) {
     // Redux states
     const { products, tShirts, mugs, hoodies } = useAppSelector(store => store.product);
     const dispatch = useDispatch<AppDispatch>();
-
-    // Initial states
-    const [pinCode, setPinCode] = React.useState("")
-    const [serviceable, setServiceable] = React.useState(null)
 
     const productIdParam = params.slug;
 
@@ -30,19 +26,6 @@ export default function Product({ params }: ProductProps) {
         product = Object.values(hoodies).find((item: any) => item.slug === productIdParam)
     }
 
-    const checkServiceability = async () => {
-        try {
-            const response = await axios.post("/api/service-pin-code", pinCode, {
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            })
-            const { isServiceable } = response.data;
-            setServiceable(isServiceable);
-        } catch (error) {
-            throw new Error("Unable to check service availability")
-        }
-    }
     return (
         <section className="text-gray-600 body-font overflow-hidden">
             <div className="container px-5 py-24 mx-auto">
@@ -63,7 +46,7 @@ export default function Product({ params }: ProductProps) {
 
                             <div className="flex ml-6 items-center">
                                 <span className="mr-3 capitalize">size</span>
-                                <SizeOptions product={product}/>
+                                <SizeOptions product={product} />
                             </div>
                         </div>
                         <div className="flex justify-between">
@@ -78,16 +61,7 @@ export default function Product({ params }: ProductProps) {
                                 </button>
                             </div>
                         </div>
-                        <div className="flex mt-5">
-                            <input className="border border-grey-100 px-3 rounded-md w-full" type="text" placeholder="Enter an Indian pincode" value={pinCode} onChange={(e) => setPinCode(e.target.value)} />
-                            <button className="flex ml-3 text-white bg-blue-900 border-0 py-2 px-6 focus:outline-none hover:bg-blue-700 rounded" disabled={!pinCode} onClick={checkServiceability}>Check</button>
-                        </div>
-                        {serviceable && (
-                            <p className="text-green-600">Woah!, Free shipping available for your location</p>
-                        )}
-                        {serviceable !== null && serviceable === false && (
-                            <p className="text-red-400">Sorry, we don't deliver to this location</p>
-                        )}
+                        <ServiceabilityCheck />
                     </div>
                 </div>
             </div>
