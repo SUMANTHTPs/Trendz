@@ -9,7 +9,7 @@ function SizeOptions({ product }: any) {
         <div className="flex gap-1">
             {availableSizes.map((size) => (
                 product.size.includes(size) && (
-                    <button key={size} className={buttonStyle}>{size}</button>
+                    <button key={size} value={size} className={buttonStyle}>{size}</button>
                 )
             ))}
         </div>
