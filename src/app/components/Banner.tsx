@@ -37,7 +37,7 @@ function Banner() {
                         left: "50%",
                         translate: "-50%",
                     }}
-                    className="absolute bg-white text-gray-700 border border-gray-200 py-3 px-8 rounded-lg bottom-8 text-xl font-bold"
+                    className="absolute bg-white text-gray-700 border border-gray-200 py-3 px-8 rounded-lg bottom-8 text-xl font-bold transition-transform duration-300"
                 >
                     Shop Now
                 </button>
