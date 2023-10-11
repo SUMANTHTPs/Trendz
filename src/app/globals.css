@@ -8,6 +8,7 @@
   box-sizing: border-box;
 }
 
+/* Welcome banner */
 .banner-img {
   transition: translate 300ms ease-in-out;
 }
@@ -35,6 +36,13 @@
   50% {
     scale: 1.4 0.6;
   }
+}
+
+/*cart item */
+.cart-item {
+  display: grid;
+  grid-template-columns: 1fr 6fr 2fr;
+  /* gap: 16px; */
 }
 
 ::-webkit-scrollbar {

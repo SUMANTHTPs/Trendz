@@ -1,8 +1,6 @@
 "use client";
 import React from "react"
-import { addToCart } from "@/redux/features/cartSlice";
-import { useDispatch } from "react-redux";
-import { AppDispatch, useAppSelector } from "@/redux/store";
+import { useAppSelector } from "@/redux/store";
 import SizeOptions from "@/app/components/SizeOptions";
 import ColorOptions from "@/app/components/ColorOptions";
 import Ratings from "@/app/components/Ratings";

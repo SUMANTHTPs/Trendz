@@ -4,6 +4,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export type CartItemProps = {
   productId: string;
   amount: number;
+  size: string;
+  color: string;
 };
 type CartProps = {
   isOpen: boolean;
@@ -26,10 +28,19 @@ export const cart = createSlice({
     },
     addToCart: (state, action) => {
       const existingItem = state.cartItems.find(
-        (item) => item.productId === action.payload
+        (item) =>
+          item.productId === action.payload.productId &&
+          item.color === action.payload.color &&
+          item.size === action.payload.size
       );
+      console.log(existingItem);
       if (!existingItem) {
-        state.cartItems.push({ productId: action.payload, amount: 1 });
+        state.cartItems.push({
+          productId: action.payload.productId,
+          amount: 1,
+          size: action.payload.size,
+          color: action.payload.color,
+        });
       } else {
         existingItem.amount += 1;
       }
@@ -58,9 +69,11 @@ export const cart = createSlice({
       const products = payload;
       state.subTotal = state.cartItems.reduce((total, cartItem) => {
         const currentItem = products.find(
-          (item: { slug: string; }) => item.slug === cartItem.productId
+          (item: { slug: string }) => item.slug === cartItem.productId
         );
-        return Number((total + currentItem?.price * cartItem.amount).toFixed(2));
+        return Number(
+          (total + currentItem?.price * cartItem.amount).toFixed(2)
+        );
       }, 0);
     },
   },
