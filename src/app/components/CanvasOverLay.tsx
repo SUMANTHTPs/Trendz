@@ -1,10 +1,5 @@
 import React from 'react'
 
-interface BackdropProps {
-    onClick: () => void;
-}
-
-
 function CanvasOverLay() {
     React.useEffect(() => {
         document.body.style.overflow = "hidden";
