@@ -1,15 +1,24 @@
 "use client";
 import React from "react"
-import { useAppSelector } from "@/redux/store";
+import { AppDispatch, useAppSelector } from "@/redux/store";
 import SizeOptions from "@/app/components/SizeOptions";
 import ColorOptions from "@/app/components/ColorOptions";
 import Ratings from "@/app/components/Ratings";
 import ServiceabilityCheck from "@/app/components/ServiceabilityCheck";
 import ProductActionButtonsContainer from "@/app/components/ProductActionButtonsContainer";
+import { useDispatch } from "react-redux";
+import { setColor, setSize } from "@/redux/features/productSlice";
 
 export default function Product({ params }: ProductProps) {
     // Redux states
     const { products, tShirts, mugs, hoodies } = useAppSelector(store => store.product);
+    const dispatch = useDispatch<AppDispatch>();
+
+    // Reset size and color
+    React.useEffect(()=> {
+        dispatch(setColor(null))
+        dispatch(setSize(null))
+    },[])
 
     const productIdParam = params.slug;
 

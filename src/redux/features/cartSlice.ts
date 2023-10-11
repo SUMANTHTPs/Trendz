@@ -1,5 +1,6 @@
 "use client";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 export type CartItemProps = {
   productId: string;
@@ -27,22 +28,30 @@ export const cart = createSlice({
       state.isOpen = !state.isOpen;
     },
     addToCart: (state, action) => {
-      const existingItem = state.cartItems.find(
-        (item) =>
-          item.productId === action.payload.productId &&
-          item.color === action.payload.color &&
-          item.size === action.payload.size
-      );
-      console.log(existingItem);
-      if (!existingItem) {
-        state.cartItems.push({
-          productId: action.payload.productId,
-          amount: 1,
-          size: action.payload.size,
-          color: action.payload.color,
-        });
+      if (action.payload === null) {
+        toast.warning("Something went wrong");
+      } else if (action.payload.size === null) {
+        toast.warning("Please select the size");
+      } else if (action.payload.color === null) {
+        toast.warning("Please select the color");
       } else {
-        existingItem.amount += 1;
+        const existingItem = state.cartItems.find(
+          (item) =>
+            item.productId === action.payload.productId &&
+            item.color === action.payload.color &&
+            item.size === action.payload.size
+        );
+        if (!existingItem) {
+          state.cartItems.push({
+            productId: action.payload.productId,
+            amount: 1,
+            size: action.payload.size,
+            color: action.payload.color,
+          });
+        } else {
+          existingItem.amount += 1;
+        }
+        toast.success("Item added to your cart");
       }
     },
     removeFromCart: (state, action) => {

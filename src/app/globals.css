@@ -48,7 +48,7 @@
 /*cart item */
 .cart-item {
   display: grid;
-  grid-template-columns: 1fr 6fr 2fr;
+  grid-template-columns: 2fr 8fr 2fr;
   /* gap: 16px; */
 }
 

@@ -4,6 +4,8 @@ import { Inter } from 'next/font/google'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import { ReduxProvider } from '@/redux/provider'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,6 +29,18 @@ export default function RootLayout({
         <ReduxProvider>
           <Navbar />
           {children}
+          <ToastContainer
+            position="bottom-center"
+            autoClose={1000}
+            hideProgressBar={true}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
           <Footer />
         </ReduxProvider>
       </body>
