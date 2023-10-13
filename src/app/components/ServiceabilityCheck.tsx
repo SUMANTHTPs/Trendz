@@ -28,10 +28,10 @@ function ServiceabilityCheck() {
             </div>
             <div className='p-1'>
                 {serviceable && (
-                    <p className="text-green-600">Woah! Free shipping available for your location</p>
+                    <p className="text-green-600">{"Woah! Free shipping available for your location"}</p>
                 )}
                 {serviceable !== null && serviceable === false && (
-                    <p className="text-red-400">Sorry, we don&apos;t deliver to this location</p>
+                    <p className="text-red-400">{"Sorry, we don't deliver to this location"}</p>
                 )}
             </div>
         </div>
