@@ -22,7 +22,7 @@ function CartItem({ cartItem }: any) {
                             className="w-full h-full object-fill border border-gray-100 rounded-md"
                         />
                         <div style={{ backgroundColor: color }} className={`absolute p-2 w-2 h-2 -top-1 -right-1 flex items-center justify-center rounded-lg border border-gray-600`}>
-                            <span className='text-white stroke-black text-outline'>{size}</span>
+                            <span className='text-white stroke-black text-outline text-xs'>{size}</span>
                         </div>
                     </div>
                     <div className="flex flex-col flex-grow pl-4">
