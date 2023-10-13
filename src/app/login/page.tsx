@@ -5,6 +5,8 @@ import Link from 'next/link'
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
+
 
 const initialState = {
   email: "",
@@ -12,6 +14,7 @@ const initialState = {
 } as ExistingUserProps
 
 function LoginPage() {
+  const router = useRouter()
   const [values, setValues] = React.useState(initialState)
   const dispatch = useDispatch<AppDispatch>();
 
@@ -20,14 +23,17 @@ function LoginPage() {
     setValues({ ...values, [name]: value });
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     const { email, password } = values;
     if (!email || !password) {
       toast.error("Please fill all the fields");
       return;
     }
-    dispatch(loginUser(values))
+    const response = await dispatch(loginUser(values))
+    if (response.payload && response.payload.success) {
+      router.push("/")
+    }
   }
   return (
     <div className='flex justify-center'>
