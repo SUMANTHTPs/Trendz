@@ -5,6 +5,7 @@ import {
   createAsyncThunk,
   createSlice,
 } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 const initialState = {
   products: [],
@@ -39,7 +40,7 @@ export const product = createSlice({
         state.size = null;
       })
       .addCase(getProduct.rejected, () => {
-        console.log("Failed to fetch data");
+        toast.error("Something went wrong from our end, Please try again")
       });
   },
 });

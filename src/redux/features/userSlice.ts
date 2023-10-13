@@ -34,9 +34,7 @@ const userSlice = createSlice({
         toast.error(payload);
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        console.log(action.payload)
         const { user } = action.payload;
-        console.log(action.payload);
         // state.user = user;
         toast.success(`Welcome back!, ${user.name}`);
       })

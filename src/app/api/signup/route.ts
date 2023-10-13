@@ -6,9 +6,7 @@ export async function POST(req: NextRequest) {
   try {
     const requestBody = await req.json();
     const { name, email, password } = requestBody;
-    console.log(requestBody)
     const existingUser = await User.findOne({ email });
-    console.log(existingUser);
     if (existingUser) {
       return NextResponse.json(
         { error: "Duplicate email", msg: "Email already exists" },
@@ -25,10 +23,7 @@ export async function POST(req: NextRequest) {
       email,
       password: hashedPassword,
     });
-    console.log(newUser)
     const savedUser = await newUser.save();
-    console.log("saved")
-    console.log(savedUser);
     return NextResponse.json(
       {
         success: true,
@@ -38,7 +33,6 @@ export async function POST(req: NextRequest) {
       { status: 200 }
     );
   } catch (error: any) {
-    console.log(error)
     return NextResponse.json(
       {
         error: error,
