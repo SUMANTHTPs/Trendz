@@ -8,6 +8,11 @@ export type UserProps = {
   password: string;
 };
 
+export type ExistingUserProps = {
+  email: string;
+  password: string;
+};
+
 const initialState = {
   user: {
     name: "",
@@ -20,11 +25,24 @@ const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(signUpUser.fulfilled, (state, { payload }) => {
-      const { user } = payload;
-      state.user = user;
-      toast.success(`Hi there!, ${user.name}`);
-    });
+    builder
+      .addCase(signUpUser.fulfilled, (state, { payload }) => {
+        const { user } = payload;
+        toast.success(`Hi there!, ${user?.name}`);
+      })
+      .addCase(signUpUser.rejected, (state, { payload }: any) => {
+        toast.error(payload);
+      })
+      .addCase(loginUser.fulfilled, (state, action) => {
+        console.log(action.payload)
+        const { user } = action.payload;
+        console.log(action.payload);
+        // state.user = user;
+        toast.success(`Welcome back!, ${user.name}`);
+      })
+      .addCase(loginUser.rejected, (state, { payload }: any) => {
+        toast.error(payload);
+      });
   },
 });
 
@@ -34,10 +52,20 @@ export const signUpUser = createAsyncThunk(
     try {
       const response = await customFetch.post("signup", user);
       return response.data;
-    } catch (error) {
-      throw error; // Throw the error to be handled by Redux Toolkit
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data.msg);
     }
   }
 );
-
+export const loginUser = createAsyncThunk(
+  "user/loginUser",
+  async (user: ExistingUserProps, thunkAPI) => {
+    try {
+      const response = await customFetch.post("login", user);
+      return response.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data.msg);
+    }
+  }
+);
 export default userSlice.reducer;

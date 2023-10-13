@@ -13,11 +13,16 @@ export async function GET(request: NextRequest) {
     const mugs = await getProducts("mugs");
     return NextResponse.json({ status: 200, tShirts, hoodies, mugs, products });
   } catch (error: any) {
-    return NextResponse.json({
-      status: 500,
-      message: "Internal server error",
-      error: error.message,
-    });
+    return NextResponse.json(
+      {
+        success: false,
+        msg: "Internal server error",
+        error: error.message,
+      },
+      {
+        status: 500,
+      }
+    );
   }
 }
 
@@ -26,17 +31,38 @@ export async function POST(request: NextRequest) {
     const requestBody = await request.json();
 
     if (!Array.isArray(requestBody)) {
-      return NextResponse.json({ status: 400, error: "Invalid request body" });
+      return NextResponse.json(
+        {
+          error: "Invalid request body",
+          msg: "Invalid request body",
+        },
+        {
+          status: 400,
+        }
+      );
     }
     await Product.insertMany(requestBody);
 
-    return NextResponse.json({ status: 200, success: true });
+    return NextResponse.json(
+      {
+        success: true,
+        msg: "Products inserted",
+      },
+      {
+        status: 200,
+      }
+    );
   } catch (error) {
-    return NextResponse.json({
-      status: 500,
-      message: "Internal server error",
-      error: error,
-    });
+    return NextResponse.json(
+      {
+        success: false,
+        msg: "Internal server error",
+        error: error,
+      },
+      {
+        status: 500,
+      }
+    );
   }
 }
 
@@ -48,14 +74,35 @@ export async function PUT(request: NextRequest) {
       new: true,
     });
     if (!updatedProduct) {
-      return NextResponse.json({ status: 404, message: "Product not found!" });
+      return NextResponse.json(
+        {
+          success: false,
+          msg: "Product not found!",
+        },
+        {
+          status: 404,
+        }
+      );
     }
-    return NextResponse.json({ status: 200, message: "Product updated" });
+    return NextResponse.json(
+      {
+        success: true,
+        msg: "Product updated",
+      },
+      {
+        status: 200,
+      }
+    );
   } catch (error) {
-    return NextResponse.json({
-      status: 500,
-      message: "Internal server error",
-      error: error,
-    });
+    return NextResponse.json(
+      {
+        success: false,
+        msg: "Internal server error",
+        error: error,
+      },
+      {
+        status: 500,
+      }
+    );
   }
 }

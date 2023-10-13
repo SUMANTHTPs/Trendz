@@ -6,8 +6,24 @@ export async function POST(request: NextRequest) {
     const reqBody = await request.json();
     const pinCode = reqBody;
     const isServiceable = pinCodes.includes(pinCode);
-    return NextResponse.json({ isServiceable: isServiceable }, { status: 200 });
+    return NextResponse.json(
+      {
+        isServiceable: isServiceable,
+        msg: "Pin code is serviceable",
+      },
+      {
+        status: 200,
+      }
+    );
   } catch (error) {
-    return NextResponse.json({ error: error }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: error,
+        msg: "Pin code is not serviceable",
+      },
+      {
+        status: 500,
+      }
+    );
   }
 }
