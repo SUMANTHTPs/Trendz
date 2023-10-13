@@ -1,10 +1,10 @@
-import axios from 'axios'
-import React from 'react'
+import axios from 'axios';
+import React from 'react';
 
 function ServiceabilityCheck() {
     // Initial states
-    const [pinCode, setPinCode] = React.useState("")
-    const [serviceable, setServiceable] = React.useState(null)
+    const [pinCode, setPinCode] = React.useState("");
+    const [serviceable, setServiceable] = React.useState(null);
 
     const checkServiceability = async () => {
         try {
@@ -12,13 +12,14 @@ function ServiceabilityCheck() {
                 headers: {
                     "Content-Type": "application/json"
                 }
-            })
+            });
             const { isServiceable } = response.data;
             setServiceable(isServiceable);
         } catch (error) {
-            throw new Error("Unable to check service availability")
+            throw new Error("Unable to check service availability");
         }
     }
+
     return (
         <div>
             <div className="flex mt-5">
@@ -27,14 +28,14 @@ function ServiceabilityCheck() {
             </div>
             <div className='p-1'>
                 {serviceable && (
-                    <p className="text-green-600">Woah!, Free shipping available for your location</p>
+                    <p className="text-green-600">Woah! Free shipping available for your location</p>
                 )}
                 {serviceable !== null && serviceable === false && (
-                    <p className="text-red-400">Sorry, we don't deliver to this location</p>
+                    <p className="text-red-400">Sorry, we don&apos;t deliver to this location</p>
                 )}
             </div>
         </div>
-    )
+    );
 }
 
-export default ServiceabilityCheck
+export default ServiceabilityCheck;
