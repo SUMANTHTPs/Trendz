@@ -7,22 +7,12 @@ import { AppDispatch, useAppSelector } from '@/redux/store';
 import { useDispatch } from 'react-redux';
 import { toggleCartModel } from '@/redux/features/cartSlice';
 import UserProfile from './UserProfile';
+import { getCookie } from '@/utils/utilities';
 
-function getCookie(name: any) {
-  const cookies = document.cookie.split(';');
-  for (let i = 0; i < cookies.length; i++) {
-    const cookie = cookies[i].trim();
-    if (cookie.startsWith(name + '=')) {
-      return cookie.substring(name.length + 1);
-    }
-  }
-  return null; // Cookie not found
-}
 const Navbar = () => {
   const { cartItems } = useAppSelector((store) => store.cart)
   let totalItems = cartItems.reduce((total, item) => total + item.amount, 0)
   const dispatch = useDispatch<AppDispatch>();
-  console.log(getCookie('token'))
   return (
     <div className='sticky top-0 bg-white z-50' >
       <div className="flex flex-row p-3 justify-between items-center shadow-lg my-2">
