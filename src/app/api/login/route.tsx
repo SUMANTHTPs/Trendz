@@ -38,7 +38,8 @@ export async function POST(req: NextRequest) {
         })
 
         // set cookies
-        response.cookies.set("token", token, { httpOnly: true })
+        response.cookies.set("token", token, { httpOnly: false })
+        response.headers.set("token", token)
         return response;
 
     } catch (error: any) {

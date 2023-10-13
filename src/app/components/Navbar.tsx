@@ -6,11 +6,23 @@ import Cart from './Cart';
 import { AppDispatch, useAppSelector } from '@/redux/store';
 import { useDispatch } from 'react-redux';
 import { toggleCartModel } from '@/redux/features/cartSlice';
+import UserProfile from './UserProfile';
 
+function getCookie(name: any) {
+  const cookies = document.cookie.split(';');
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim();
+    if (cookie.startsWith(name + '=')) {
+      return cookie.substring(name.length + 1);
+    }
+  }
+  return null; // Cookie not found
+}
 const Navbar = () => {
   const { cartItems } = useAppSelector((store) => store.cart)
   let totalItems = cartItems.reduce((total, item) => total + item.amount, 0)
   const dispatch = useDispatch<AppDispatch>();
+  console.log(getCookie('token'))
   return (
     <div className='sticky top-0 bg-white z-50' >
       <div className="flex flex-row p-3 justify-between items-center shadow-lg my-2">
@@ -23,9 +35,14 @@ const Navbar = () => {
             <Link href={"/caps"}><li className='capitalize'>caps</li></Link>
           </ul>
         </div>
-        <div className="cart relative" onClick={() => dispatch(toggleCartModel())}>
-          <img className='w-10 h-8' src={icons.cart} />
-          <p className='absolute flex items-center justify-center rounded-full bg-blue-800 text-white w-1 h-1 p-2 -top-1 -right-0 text-xs'>{totalItems}</p>
+        <div className='flex gap-1 items-center justify-center'>
+          <div className="profile text-gray-600">
+            <UserProfile />
+          </div>
+          <div className="cart relative" onClick={() => dispatch(toggleCartModel())}>
+            <img className='w-10 h-8' src={icons.cart} />
+            <p className='absolute flex items-center justify-center rounded-full bg-blue-800 text-white w-1 h-1 p-2 -top-1 -right-0 text-xs'>{totalItems}</p>
+          </div>
         </div>
       </div>
       <Cart />
