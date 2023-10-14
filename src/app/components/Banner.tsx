@@ -28,7 +28,7 @@ function Banner() {
     }, []);
 
     return (
-        <div className='relative' style={{ maxWidth: "1600px", width: "100%", height: "650px", margin: "0 auto" }}>
+        <div className='relative banner-styles'>
             <ImageSlider imageUrls={banners} />
             {showButton && (
                 <button

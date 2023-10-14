@@ -52,6 +52,20 @@
   /* gap: 16px; */
 }
 
+.banner-styles {
+  max-width: 1600px;
+  width: 100%;
+  height: 650px;
+  margin: 0 auto;
+}
+
+/* Media query for screens with a maximum width of 768px */
+@media (max-width: 768px) {
+  .banner-styles {
+    height: 450px;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;

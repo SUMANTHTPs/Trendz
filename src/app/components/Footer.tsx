@@ -5,7 +5,7 @@ import Link from 'next/link'
 const Footer = () => {
     return (
         <footer className="text-gray-600 body-font">
-            <div className="container px-5 py-8 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+            <div className="container px-5 py-12 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
                 <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
                     <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
                         <Logo />
@@ -58,7 +58,7 @@ const Footer = () => {
                     <div className="lg:w-1/4 md:w-1/2 w-full px-4">
                         <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Payments accepted</h2>
                         <nav className="list-none mb-10">
-                            <img className='w-full h-[25vh] p-2' src={"https://t4.ftcdn.net/jpg/04/73/84/61/360_F_473846184_0k637f6855ZJqaulKqAmgJTEVGVibR1P.jpg"} alt="pay-image" />
+                            <img className='w-full h-[25vh] py-2' src={"https://t4.ftcdn.net/jpg/04/73/84/61/360_F_473846184_0k637f6855ZJqaulKqAmgJTEVGVibR1P.jpg"} alt="pay-image" />
                         </nav>
                     </div>
                 </div>
