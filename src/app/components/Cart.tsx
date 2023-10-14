@@ -11,6 +11,7 @@ import React from "react";
 import EmptyCart from "./EmptyCart";
 import Link from "next/link";
 import CanvasOverLay from "./CanvasOverLay";
+import { getCookie } from "@/utils/utilities";
 
 export default function Cart() {
   const { isOpen, cartItems, subTotal } = useAppSelector((store) => store.cart);
@@ -20,14 +21,15 @@ export default function Cart() {
   React.useEffect(() => {
     dispatch(getSubTotal(products));
   }, [cartItems]);
+  const token = getCookie('token')
 
   return (
     <>
       {isOpen && <CanvasOverLay />}
       {isOpen && (
         <div
-          className={`fixed right-0 top-0 bg-white w-full sm:w-full md:w-[30vw] h-[100vh] overflow-y-auto`}
-          style={{paddingBottom: "100px"}}
+          className={`fixed right-0 top-0 bg-white w-full sm:w-full md:w-[30vw] h-[100vh] overflow-y-auto shadow-lg`}
+          style={{ paddingBottom: "100px" }}
         >
           <div className="flex justify-between items-center">
             <h1 className="p-5 text-2xl">Your cart items</h1>
@@ -43,7 +45,7 @@ export default function Cart() {
           {!!cartItems.length && (
             <p className="flex items-center justify-start mx-3 p-2">{`Total amount (Including tax): ${subTotal}`}</p>
           )}
-          <div className="fixed bottom-0 flex gap-3 p-2 mx-6">
+          {!!cartItems.length && <div className="fixed bottom-0 flex gap-3 p-2 mx-6">
             <button
               className="bg-blue-900 w-[40vw] md:w-[13vw] text-white flex items-center justify-center gap-2 p-2 py-3 rounded-lg "
               onClick={() => {
@@ -54,7 +56,7 @@ export default function Cart() {
               Clear
               <AiOutlineClose />
             </button>
-            <Link href="/checkout">
+            <Link href={token ? "/checkout": "/login"}>
               <button
                 onClick={() => dispatch(toggleCartModel())}
                 className="bg-blue-900 w-[40vw] md:w-[13vw] text-white flex items-center justify-center gap-2 p-2 py-3 rounded-lg "
@@ -76,7 +78,7 @@ export default function Cart() {
                 </svg>
               </button>
             </Link>
-          </div>
+          </div>}
         </div>
       )}
     </>

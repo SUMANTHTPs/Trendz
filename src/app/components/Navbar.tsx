@@ -1,4 +1,5 @@
 "use client";
+import React from "react"
 import Link from 'next/link';
 import Logo from './Logo'
 import { icons } from '@/utils/data';
@@ -8,11 +9,15 @@ import { useDispatch } from 'react-redux';
 import { toggleCartModel } from '@/redux/features/cartSlice';
 import UserProfile from './UserProfile';
 import { getCookie } from '@/utils/utilities';
+import { LoginButton } from "./LoginButton";
+
 
 const Navbar = () => {
   const { cartItems } = useAppSelector((store) => store.cart)
+  const { user } = useAppSelector((store) => store.user)
   let totalItems = cartItems.reduce((total, item) => total + item.amount, 0)
   const dispatch = useDispatch<AppDispatch>();
+
   return (
     <div className='sticky top-0 bg-white z-50' >
       <div className="flex flex-row p-3 justify-between items-center shadow-lg my-2">
@@ -27,7 +32,7 @@ const Navbar = () => {
         </div>
         <div className='flex gap-1 items-center justify-center'>
           <div className="profile text-gray-600">
-            <UserProfile />
+            {user ? <UserProfile /> : <LoginButton />}
           </div>
           <div className="cart relative" onClick={() => dispatch(toggleCartModel())}>
             <img className='w-10 h-8' src={icons.cart} />

@@ -3,7 +3,7 @@ import { AppDispatch, useAppSelector } from '@/redux/store';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-function SizeOptions({ product }: any) {
+function SizeOptions({ product, disabled }: any) {
     const dispatch = useDispatch<AppDispatch>();
     const availableSizes = ["S", "M", "L", "XL"];
     const { size: selectedSize }: any = useAppSelector(store => store.product)
@@ -15,8 +15,8 @@ function SizeOptions({ product }: any) {
                     <button
                         key={size}
                         value={size}
-                        onClick={() => dispatch(setSize(size))}
-                        style={size.toLowerCase() === selectedSize?.toLowerCase() ? {
+                        onClick={() => !disabled && dispatch(setSize(size))}
+                        style={(size.toLowerCase() === selectedSize?.toLowerCase() && !disabled) ? {
                             border: "2px solid black",
                             backgroundColor: 'lightgray'
                         } : {}}

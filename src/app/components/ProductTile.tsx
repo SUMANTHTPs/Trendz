@@ -23,8 +23,8 @@ function ProductTile({ product }: any) {
                 </a>
                 <p className="mt-1">₹{price}</p>
                 <div className="flex flex-col gap-3 my-2">
-                    <SizeOptions product={product} />
-                    <ColorOptions product={product} />
+                    <SizeOptions product={product} disabled={true} />
+                    <ColorOptions product={product} disabled={true} />
                 </div>
             </div>
         </div>

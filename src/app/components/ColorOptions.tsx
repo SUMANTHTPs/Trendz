@@ -4,7 +4,7 @@ import { AppDispatch, useAppSelector } from '@/redux/store';
 import React from 'react'
 import { useDispatch } from 'react-redux';
 
-function ColorOptions({ product }: any) {
+function ColorOptions({ product, disabled }: any) {
     const dispatch = useDispatch<AppDispatch>();
     const { color: selectedColor }: any = useAppSelector(store => store.product)
     return (
@@ -14,10 +14,10 @@ function ColorOptions({ product }: any) {
                     key={color}
                     style={{
                         backgroundColor: color,
-                        border: color.toLowerCase() === selectedColor?.toLowerCase() ? "2px solid #007bff" : ""
+                        border: (color.toLowerCase() === selectedColor?.toLowerCase() && !disabled) ? "2px solid #007bff" : ""
                     }}
                     className="border-2 border-gray-300 ml-1 rounded-full w-6 h-6 focus:outline-none"
-                    onClick={() => dispatch(setColor(color))}
+                    onClick={() => !disabled && dispatch(setColor(color))}
                 ></button>
             ))}
         </div>
