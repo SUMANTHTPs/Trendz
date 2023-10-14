@@ -10,13 +10,20 @@ import { toggleCartModel } from '@/redux/features/cartSlice';
 import UserProfile from './UserProfile';
 import { getCookie } from '@/utils/utilities';
 import { LoginButton } from "./LoginButton";
+import { usePathname, useSearchParams } from "next/navigation";
 
 
 const Navbar = () => {
   const { cartItems } = useAppSelector((store) => store.cart)
-  const { user } = useAppSelector((store) => store.user)
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  const [token, setToken] = React.useState("")
   let totalItems = cartItems.reduce((total, item) => total + item.amount, 0)
   const dispatch = useDispatch<AppDispatch>();
+
+  React.useEffect(() => {
+    setToken(getCookie("token") ?? "")
+  }, [pathname, searchParams])
 
   return (
     <div className='sticky top-0 bg-white z-50' >
@@ -32,7 +39,7 @@ const Navbar = () => {
         </div>
         <div className='flex gap-1 items-center justify-center'>
           <div className="profile text-gray-600">
-            {user ? <UserProfile /> : <LoginButton />}
+            {token ? <UserProfile /> : <LoginButton />}
           </div>
           <div className="cart relative" onClick={() => dispatch(toggleCartModel())}>
             <img className='w-10 h-8' src={icons.cart} />
