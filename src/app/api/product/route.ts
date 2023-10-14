@@ -3,7 +3,7 @@ import Product from "@/models/Product";
 import { NextRequest, NextResponse } from "next/server";
 import { getProducts } from "../utils";
 
-connect();
+await connect();
 
 export async function GET(request: NextRequest) {
   try {
