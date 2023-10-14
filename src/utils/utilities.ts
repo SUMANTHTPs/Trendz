@@ -6,5 +6,5 @@ export function getCookie(name: any) {
       return cookie.substring(name.length + 1);
     }
   }
-  return null; // Cookie not found
+  return null;
 }

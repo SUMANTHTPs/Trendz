@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
         }
 
         // create token
-        const token = await jwt.sign(tokenData, process.env.SECRET!);
+        const token = await jwt.sign(tokenData, process.env.NEXT_PUBLIC_SECRET!);
 
         // create next response
         const response = NextResponse.json({
