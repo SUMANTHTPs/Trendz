@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import { ReduxProvider } from '@/redux/provider'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import NextTopLoader from 'nextjs-toploader'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,11 +24,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="images/shirt.png" sizes='128x128'/>
+        <link rel="icon" href="images/shirt.png" sizes='128x128' />
       </head>
       <body className={inter.className}>
         <ReduxProvider>
           <Navbar />
+          <NextTopLoader
+            color="#1e3a8a"
+            initialPosition={0.08}
+            crawlSpeed={200}
+            height={3}
+            crawl={true}
+            showSpinner={false}
+            easing="ease"
+            speed={200}
+            shadow="0 0 10px #1e3a8a,0 0 5px #1e3a8a" />
           {children}
           <ToastContainer
             position="bottom-center"
