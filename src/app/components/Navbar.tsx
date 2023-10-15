@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
     <div className='sticky top-0 bg-white z-50' >
-      <div className="flex flex-row p-3 justify-between items-center shadow-lg my-2">
+      <div className="flex flex-row p-3 justify-between items-center shadow-lg my-2 select-none">
         <div className="nav flex flex-col md:flex-row gap-5 font-bold justify-center items-start">
           <div className="flex gap-2">
             <div className="md:hidden menu-icon cursor-pointer relative" onClick={() => setShowCategories(!showCategories)}>

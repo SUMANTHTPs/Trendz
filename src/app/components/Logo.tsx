@@ -10,7 +10,7 @@ const Logo = () => {
     router.push("/")
   }
   return (
-    <div className='flex justify-center items-center gap-2 cursor-pointer' onClick={navigateToHome}>
+    <div className='flex justify-center items-center gap-2 cursor-pointer select-none' onClick={navigateToHome}>
       <Image
         src="/images/shirt.png"
         width={40}
