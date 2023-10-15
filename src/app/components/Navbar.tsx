@@ -21,6 +21,8 @@ const Navbar = () => {
   let totalItems = cartItems.reduce((total, item) => total + item.amount, 0)
   const dispatch = useDispatch<AppDispatch>();
 
+  const [showCategories, setShowCategories] = React.useState(false);
+
   React.useEffect(() => {
     setToken(getCookie("token") ?? "")
   }, [pathname, searchParams])
@@ -29,8 +31,23 @@ const Navbar = () => {
     <div className='sticky top-0 bg-white z-50' >
       <div className="flex flex-row p-3 justify-between items-center shadow-lg my-2">
         <div className="nav flex flex-col md:flex-row gap-5 font-bold justify-center items-start">
-          <Logo />
-          <ul className="flex gap-3 items-center justify-center p-2">
+          <div className="flex gap-2">
+            <div className="md:hidden menu-icon cursor-pointer relative" onClick={() => setShowCategories(!showCategories)}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="36" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
+                <path d="M2 4.5A.5.5 0 0 1 2.5 4h11a.5.5 0 0 1 .5.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5zM2 8.5A.5.5 0 0 1 2.5 8h11a.5.5 0 0 1 .5.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5zM2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5z" />
+              </svg>
+              {showCategories && (
+                <div className="list-none absolute bg-white w-[100vw] top-12 shadow-lg text-center -mx-3 p-2">
+                  <Link href={"/tshirts"}><li className='capitalize'>t-shirts</li></Link>
+                  <Link href={"/hoodies"}><li className='capitalize'>hoodies</li></Link>
+                  <Link href={"/mugs"}><li className='capitalize'>mugs</li></Link>
+                  <Link href={"/caps"}><li className='capitalize'>caps</li></Link>
+                </div>
+              )}
+            </div>
+            <Logo />
+          </div>
+          <ul className="hidden md:flex gap-3 items-center justify-center p-2">
             <Link href={"/tshirts"}><li className='capitalize'>t-shirts</li></Link>
             <Link href={"/hoodies"}><li className='capitalize'>hoodies</li></Link>
             <Link href={"/mugs"}><li className='capitalize'>mugs</li></Link>
