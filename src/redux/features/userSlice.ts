@@ -28,7 +28,7 @@ const userSlice = createSlice({
     builder
       .addCase(signUpUser.fulfilled, (state, { payload }) => {
         const { user } = payload;
-        toast.success(`Hi there!, ${user?.name}`);
+        toast.success(`Welcome ${user?.name}`);
       })
       .addCase(signUpUser.rejected, (state, { payload }: any) => {
         toast.error(payload);
@@ -36,7 +36,7 @@ const userSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         const { user } = action.payload;
         state.user = user;
-        toast.success(`Welcome back!, ${user.name}`);
+        toast.success(`Hi ${user.name}`);
       })
       .addCase(loginUser.rejected, (state, { payload }: any) => {
         toast.error(payload);

@@ -1,7 +1,8 @@
 "use client";
-import { UserProps, signUpUser } from '@/redux/features/userSlice';
+import { UserProps, loginUser, signUpUser } from '@/redux/features/userSlice';
 import { AppDispatch } from '@/redux/store';
 import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -15,20 +16,27 @@ const initialState = {
 function SignInPage() {
   const [values, setValues] = React.useState(initialState)
   const dispatch = useDispatch<AppDispatch>();
+  const router = useRouter();
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     const { name, email, password } = values;
     if (!email || !password || !name) {
       toast.error("Please fill all the fields");
       return;
     }
-    dispatch(signUpUser(values))
+    const signInResponse = await dispatch(signUpUser(values));
+    if (signInResponse.payload && signInResponse.payload.success) {
+      const loginResponse = await dispatch(loginUser({ email: email, password: password }))
+      if (loginResponse.payload && loginResponse.payload.success) {
+        router.push("/")
+      }
+    }
   }
   return (
     <div className='flex justify-center'>
