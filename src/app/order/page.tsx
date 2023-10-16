@@ -43,7 +43,7 @@ function Order() {
             <tr key={index}>
               <td className="border p-3">{index + 1}</td>
               <td className="border p-3">
-                {item.products.map(product => {
+                {/* {item.products.map(product => {
                   const storeProduct: any = products.find((storeProduct: any) => 'slug' in storeProduct && product.productId === storeProduct.slug);
 
                   if (storeProduct) {
@@ -57,7 +57,7 @@ function Order() {
                     // Handle the case where a matching product is not found
                     return null; // or display an error message
                   }
-                })}
+                })} */}
               </td>
               <td className="border p-3">{`${item.subTotal}`}</td>
               <td className="border p-3">{item.status}</td>
