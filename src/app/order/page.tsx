@@ -38,32 +38,33 @@ function Order() {
             <th className="border p-3">Status</th>
           </tr>
         </thead>
-        {/* <tbody>
+        <tbody>
           {orderedItems.map((item: orderProps, index: any) => (
             <tr key={index}>
               <td className="border p-3">{index + 1}</td>
               <td className="border p-3">
-                {
-                  item.products.map(product => {
-                    const storeProduct: any = products?.filter((storeProduct: any) => {
-                      if (storeProduct && 'slug' in storeProduct && product.productId === storeProduct.slug) {
-                        return storeProduct;
-                      }
-                      return "";
-                    });
+                {item.products.map(product => {
+                  const storeProduct: any = products.find((storeProduct: any) => 'slug' in storeProduct && product.productId === storeProduct.slug);
+
+                  if (storeProduct) {
                     return (
                       <div className='flex flex-col capitalize' key={index}>
-                        <span>{`${storeProduct[0].title} (${product.size}/ ${product.color})`}</span>
+                        <span>{`${storeProduct.title} (${product.size}/ ${product.color})`}</span>
                         <span className='text-gray-500'>{`Quantity: ${product.amount}`}</span>
                       </div>
-                    )
-                  })
-                }</td>
+                    );
+                  } else {
+                    // Handle the case where a matching product is not found
+                    return null; // or display an error message
+                  }
+                })}
+              </td>
               <td className="border p-3">{`${item.subTotal}`}</td>
               <td className="border p-3">{item.status}</td>
             </tr>
           ))}
-        </tbody> */}
+
+        </tbody>
       </table>
     </div>
   )
