@@ -1,12 +1,7 @@
+import { UserProps } from "@/app/types";
 import customFetch from "@/utils/axios/axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-
-export type UserProps = {
-  name: string;
-  email: string;
-  password: string;
-};
 
 export type ExistingUserProps = {
   email: string;
@@ -23,7 +18,12 @@ const initialState = {
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    logoutUser: (state) => {
+      state.user = initialState.user;
+      document.cookie = `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(signUpUser.fulfilled, (state, { payload }) => {
@@ -67,3 +67,4 @@ export const loginUser = createAsyncThunk(
   }
 );
 export default userSlice.reducer;
+export const { logoutUser } = userSlice.actions;

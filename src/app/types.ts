@@ -35,6 +35,12 @@ export type orderProps = {
   status: string;
 };
 
+export type UserProps = {
+  name: string;
+  email: string;
+  password: string;
+};
+
 export type StoredProductProps = {
   availableQuantity: number;
   category: string;

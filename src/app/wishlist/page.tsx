@@ -1,12 +1,12 @@
 import React from 'react'
 import ComingSoon from '../components/ComingSoon'
 
-function Caps() {
+function WishList() {
   return (
     <div>
-      <ComingSoon />
+          <ComingSoon />
     </div>
   )
 }
 
-export default Caps
+export default WishList
