@@ -25,6 +25,7 @@ function Order() {
   React.useEffect(() => {
     fetchOrders()
   }, [])
+  console.log(orderedItems)
 
   return (
     <div className='flex flex-col justify-center'>
