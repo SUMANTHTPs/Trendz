@@ -34,3 +34,19 @@ export type orderProps = {
   subTotal: Number;
   status: string;
 };
+
+export type StoredProductProps = {
+  availableQuantity: number;
+  category: string;
+  color: string;
+  createdAt: string;
+  description: string;
+  img: string;
+  price: number;
+  size: string;
+  slug: string;
+  title: string;
+  updatedAt: string;
+  __v: number;
+  _id: string;
+};

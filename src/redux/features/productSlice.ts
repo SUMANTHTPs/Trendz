@@ -1,6 +1,5 @@
 import customFetch from "@/utils/axios/axios";
 import {
-  ActionCreatorWithPayload,
   PayloadAction,
   createAsyncThunk,
   createSlice,

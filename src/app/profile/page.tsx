@@ -1,19 +1,12 @@
 "use client"
-import { getCookie } from '@/utils/utilities'
+import { getCookie, getTokenDecodedData } from '@/utils/utilities'
+import Link from 'next/link'
 import React from 'react'
-import jwt, { JwtPayload } from "jsonwebtoken"
 
 function Profile() {
-    const token: string = getCookie('token') ?? " ";
-    const secret: jwt.Secret = process.env.NEXT_PUBLIC_SECRET ?? " ";
-    let decodedData: string | JwtPayload = "Unknown"
-    try {
-        decodedData = jwt.verify(token, secret);
-    } catch (error) {
-        console.log(error);
-    }
-    const name = typeof decodedData === 'object' ? decodedData.name : 'Unknown';
-    const email = typeof decodedData === 'object' ? decodedData.email : 'Unknown';
+    // gets decoded data
+    const [name, email] = getTokenDecodedData()
+
     return (
         <div className=''>
             <div className='flex flex-col md:flex-row m-5 justify-center gap-32'>
@@ -27,8 +20,16 @@ function Profile() {
                     <h1 className='text-2xl capitalize'><span className='font-bold text-3xl'>hi </span>{name}</h1>
                     <h2 className='text-gray-500'>{email}</h2>
                     <div className='button flex mt-4 gap-4'>
-                        <button className=' hover:outline hover:outline-blue-900 p-2 capitalize border-b-4 border-blue-900 hover:border-none rounded-sm'>wishlist</button>
-                        <button className=' hover:outline hover:outline-blue-900 p-2 capitalize border-b-4 border-blue-900 hover:border-none rounded-sm'>order</button>
+                        <Link href={"/"}>
+                            <button className=' hover:outline hover:outline-blue-900 p-2 capitalize border-b-4 border-blue-900 hover:border-none rounded-sm'>
+                                wishlist
+                            </button>
+                        </Link>
+                        <Link href={"/order"}>
+                            <button className=' hover:outline hover:outline-blue-900 p-2 capitalize border-b-4 border-blue-900 hover:border-none rounded-sm'>
+                                order
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>

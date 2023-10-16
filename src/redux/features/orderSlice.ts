@@ -17,7 +17,7 @@ export const ordersInitialState = {
   address: "",
   subTotal: 0,
   status: "",
-} as orderProps;
+} as any;
 
 const initialState = {
   orderItems: ordersInitialState,
@@ -43,6 +43,12 @@ export const orderSlice = createSlice({
       })
       .addCase(placeOrder.rejected, (state, action) => {
         toast.error(action.payload as string);
+      })
+      .addCase(getOrders.fulfilled, (state, action) => {
+        state.orderedItems = action.payload.userOrders;
+      })
+      .addCase(getOrders.rejected, (state, action) => {
+        toast.error(action.payload as string);
       });
   },
 });
@@ -52,6 +58,18 @@ export const placeOrder = createAsyncThunk(
   async (orderItems: orderProps, thunkAPI) => {
     try {
       const response = await customFetch.post("orders", orderItems);
+      return response.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data.msg);
+    }
+  }
+);
+
+export const getOrders = createAsyncThunk(
+  "order/getOrder",
+  async (userId: any, thunkAPI) => {
+    try {
+      const response = await customFetch.post("getOrder", userId);
       return response.data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.msg);

@@ -23,7 +23,7 @@ export default function Product({ params }: ProductProps) {
 
     const productIdParam = params.slug;
 
-    // Fetch product details based on states.
+    // Filter product details based on states.
     let product: any = products?.find((product: any) => product.slug === productIdParam)
     const productCategory = product.category
     if (productCategory === "tshirts") {
