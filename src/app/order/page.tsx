@@ -39,7 +39,7 @@ function Order() {
             <th className="border p-3">Status</th>
           </tr>
         </thead>
-        <tbody>
+        {/* <tbody>
           {orderedItems?.map((item: orderProps, index: any) => (
             <tr key={index}>
               <td className="border p-3">{index + 1}</td>
@@ -64,8 +64,7 @@ function Order() {
               <td className="border p-3">{item.status}</td>
             </tr>
           ))}
-
-        </tbody>
+        </tbody> */}
       </table>
     </div>
   )
