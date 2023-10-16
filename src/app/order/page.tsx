@@ -45,15 +45,16 @@ function Order() {
               <td className="border p-3">
                 {
                   item.products.map(product => {
-                    const storeProduct: any = products?.filter((storeProduct: any) => {
-                      if (storeProduct && 'slug' in storeProduct && product.productId === storeProduct.slug) {
-                        return storeProduct;
-                      }
-                      return "";
-                    });
+                    // const storeProduct: any = products?.filter((storeProduct: any) => {
+                    //   if (storeProduct && 'slug' in storeProduct && product.productId === storeProduct.slug) {
+                    //     return storeProduct;
+                    //   }
+                    //   return "";
+                    // });
                     return (
                       <div className='flex flex-col capitalize' key={index}>
-                        <span>{`${storeProduct[0].title} (${product.size}/ ${product.color})`}</span>
+                        {/* <span>{`${storeProduct[0].title} (${product.size}/ ${product.color})`}</span> */}
+                        <span>{`${product.productId} (${product.size}/ ${product.color})`}</span>
                         <span className='text-gray-500'>{`Quantity: ${product.amount}`}</span>
                       </div>
                     )
