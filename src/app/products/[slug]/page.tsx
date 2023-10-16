@@ -8,6 +8,7 @@ import ServiceabilityCheck from "@/app/components/ServiceabilityCheck";
 import ProductActionButtonsContainer from "@/app/components/ProductActionButtonsContainer";
 import { useDispatch } from "react-redux";
 import { setColor, setSize } from "@/redux/features/productSlice";
+import { ProductProps } from "@/app/types";
 
 export default function Product({ params }: ProductProps) {
     // Redux states
