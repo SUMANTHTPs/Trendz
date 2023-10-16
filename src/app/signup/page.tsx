@@ -1,11 +1,12 @@
 "use client";
-import { UserProps, loginUser, signUpUser } from '@/redux/features/userSlice';
+import { loginUser, signUpUser } from '@/redux/features/userSlice';
 import { AppDispatch } from '@/redux/store';
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import { UserProps } from '../types';
 
 const initialState = {
   name: "",
