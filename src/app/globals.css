@@ -62,7 +62,7 @@
 /* Media query for screens with a maximum width of 768px */
 @media (max-width: 768px) {
   .banner-styles {
-    height: 360px;
+    height: 300px;
   }
 }
 
