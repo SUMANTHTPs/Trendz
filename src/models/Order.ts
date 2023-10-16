@@ -8,11 +8,13 @@ const OrderSchema = new Schema(
     products: [
       {
         productId: { type: String },
-        quantity: { type: Number, default: 1 },
+        amount: { type: Number, default: 1 },
+        size: { type: String },
+        color: { type: String },
       },
     ],
     address: { type: String, required: true },
-    amount: { type: Number, required: true },
+    subTotal: { type: Number, required: true },
     status: { type: String, default: "Pending", required: true },
   },
   { timestamps: true }

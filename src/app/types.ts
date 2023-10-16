@@ -1,11 +1,10 @@
-
-type ProductProps = {
+export type ProductProps = {
   params: {
     slug: string;
   };
 };
 
-type ProductTileProps = {
+export type ProductTileProps = {
   slug: string;
   img: string;
   title: string;
@@ -13,4 +12,25 @@ type ProductTileProps = {
   price: string;
 };
 
+export type EventProps = {
+  preventDefault(): unknown;
+  target: {
+    name: any;
+    value: any;
+  };
+};
 
+export type orderProps = {
+  userId: string;
+  products: [
+    {
+      productId: string;
+      amount: Number;
+      size: string;
+      color: string;
+    }
+  ];
+  address: string;
+  subTotal: Number;
+  status: string;
+};
