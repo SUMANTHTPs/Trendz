@@ -5,12 +5,15 @@ import { addToCart, decreaseQuantity } from '@/redux/features/cartSlice';
 import { useAppSelector } from '@/redux/store';
 
 function CartItem({ cartItem }: any) {
+    //  props
     const { productId, amount, size, color } = cartItem;
+
+    // redux states
+    const { products } = useAppSelector<{ products: any[] }>((store) => store.product);
     const dispatch = useDispatch();
 
-    const { products } = useAppSelector<{ products: any[] }>((store) => store.product);
+    // finds matching item with slug
     const matchingItem = products.find(item => item.slug === productId);
-
     return (
         <div className="cart-item p-3 border-b border-gray-200 gap-1">
             {matchingItem && (

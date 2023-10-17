@@ -5,6 +5,7 @@ import SizeOptions from './SizeOptions';
 import ColorOptions from './ColorOptions';
 
 function ProductTile({ product }: any) {
+    // props
     const { slug, title, img, price, productType } = product;
     const productURL = `/products/${slug}`
 

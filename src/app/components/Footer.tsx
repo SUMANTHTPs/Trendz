@@ -1,8 +1,14 @@
+"use client"
 import React from 'react'
 import Logo from './Logo'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const Footer = () => {
+    const pathName = usePathname()
+    if (pathName === "/payment") {
+        return;
+    }
     return (
         <footer className="text-gray-600 body-font">
             <div className="container px-5 py-12 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">

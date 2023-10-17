@@ -6,7 +6,9 @@ type ImageSliderProps = {
     imageUrls: StaticImageData[];
 };
 function ImageSlider({ imageUrls }: ImageSliderProps) {
+    // states
     const [imgIndex, setImgIndex] = React.useState(0)
+    // change states
     const handlePrev = () => {
         setImgIndex((prevIndex) => (prevIndex - 1 + imageUrls.length) % imageUrls.length);
     };

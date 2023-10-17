@@ -14,14 +14,19 @@ import { usePathname, useSearchParams } from "next/navigation";
 
 
 const Navbar = () => {
+  // states
   const { cartItems } = useAppSelector((store) => store.cart)
+  const [token, setToken] = React.useState("")
+  const [showCategories, setShowCategories] = React.useState(false);
+  
+  // hooks
   const pathname = usePathname()
   const searchParams = useSearchParams()
-  const [token, setToken] = React.useState("")
-  let totalItems = cartItems.reduce((total, item) => total + item.amount, 0)
   const dispatch = useDispatch<AppDispatch>();
 
-  const [showCategories, setShowCategories] = React.useState(false);
+  // total cart items
+  let totalItems = cartItems.reduce((total, item) => total + item.amount, 0)
+
 
   React.useEffect(() => {
     setToken(getCookie("token") ?? "")

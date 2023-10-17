@@ -6,9 +6,13 @@ import React from 'react'
 import { useDispatch } from 'react-redux';
 
 function Payments() {
+  // states
   const { orderItems } = useAppSelector((store) => store.order);
-  const dispatch = useDispatch<AppDispatch>();
   const [disabled, setDisabled] = React.useState(false);
+  const [isChecked, setIsChecked] = React.useState(true);
+
+  // hooks
+  const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
 
   const confirmOrder = async () => {
@@ -28,7 +32,7 @@ function Payments() {
       <h1 className='text-xl font-bold'>Confirm order</h1>
       <div>
         <div className='flex gap-1'>
-          <input type="radio" name="cod" id="cod" checked />
+          <input type="radio" name="cod" id="cod" checked={isChecked} onChange={() => setIsChecked(true)} />
           <label htmlFor="cod">Cash on delivery</label>
         </div>
         <div className='flex gap-1'>

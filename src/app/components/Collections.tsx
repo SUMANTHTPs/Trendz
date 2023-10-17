@@ -1,6 +1,7 @@
 import { collectionItems } from "@/data/data";
 import React from "react";
-import CollectionItem, { CollectionProps } from "./CollectionItem";
+import CollectionItem from "./CollectionItem";
+import { CollectionProps } from "../types";
 
 function Collections() {
   return (

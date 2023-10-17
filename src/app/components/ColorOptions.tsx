@@ -5,6 +5,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux';
 
 function ColorOptions({ product, disabled }: any) {
+    // redux states
     const dispatch = useDispatch<AppDispatch>();
     const { color: selectedColor }: any = useAppSelector(store => store.product)
     return (

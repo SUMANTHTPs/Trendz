@@ -6,8 +6,11 @@ import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
 function ProductActionButtonsContainer({ productIdParam }: any) {
+    // states
     const { size, color } = useAppSelector(store => store.product)
     const { user } = useAppSelector(store => store.user)
+
+    // hooks
     const dispatch = useDispatch<AppDispatch>();
     const router = useRouter()
 

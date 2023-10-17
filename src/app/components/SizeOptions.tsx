@@ -4,9 +4,10 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 function SizeOptions({ product, disabled }: any) {
+    // redux
+    const { size: selectedSize }: any = useAppSelector(store => store.product)
     const dispatch = useDispatch<AppDispatch>();
     const availableSizes = ["S", "M", "L", "XL"];
-    const { size: selectedSize }: any = useAppSelector(store => store.product)
 
     return (
         <div className="flex gap-1">

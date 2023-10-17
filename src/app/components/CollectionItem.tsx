@@ -1,11 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-
-export type CollectionProps = {
-    img: string,
-    link: string
-    text: string
-}
+import { CollectionProps } from '../types'
 
 function CollectionItem({ img, link, text }: CollectionProps) {
     return (

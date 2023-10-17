@@ -27,8 +27,6 @@ function CheckoutPage() {
   const [deliveryDetails, setDeliveryDetails] = React.useState(initialState);
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
-  const pathName = usePathname();
-  const searchParams = useSearchParams();
 
   // Find the matching item details
   const matchingCartItems = cartItems.filter((cartItem) => {
@@ -37,11 +35,6 @@ function CheckoutPage() {
     );
     return matchingTShirt !== undefined;
   });
-
-  // React.useEffect(()=> {
-  //   console.log(first)
-  //   dispatch(setOrderItems(ordersInitialState))
-  // }, [pathName, searchParams])
 
   // handle input change
   const handleChange = (e: EventProps) => {
@@ -53,11 +46,12 @@ function CheckoutPage() {
   const submitInformation = (e: any) => {
     e.preventDefault();
     const { name, email, pin, address, city, state, phone } = deliveryDetails;
+    const fullAddress = `${name} ${email} ${address} ${city} ${state} ${pin} ${phone}`
+
     if (!(name && email && pin && address)) {
       toast.warning("Please fill out all the fields")
       return;
     }
-    const fullAddress = `${name} ${email} ${address} ${city} ${state} ${pin} ${phone}`
     const orderDetails = {
       userId: user.email,
       products: matchingCartItems,
@@ -67,6 +61,27 @@ function CheckoutPage() {
     }
     dispatch(setOrderItems(orderDetails))
     router.push("/payment")
+  }
+  
+  const OrderItems = () => {
+    return(
+      <div className="lg:w-1/2 md:w-2/3 mx-auto my-5">
+        <h2 className="border-b border-gray-300">Order Details</h2>
+        {matchingCartItems.map((item) => {
+          return <CartItem key={item.productId} cartItem={item} />;
+        })}
+        {!!matchingCartItems.length && (
+          <p className="p-2">{`Total amount (Including tax): ${subTotal}`}</p>
+        )}
+        {!!matchingCartItems.length ? (
+          <button onClick={submitInformation} type="submit" className="bg-blue-700 hover:bg-blue-900 w-full text-white flex items-center justify-center gap-2 p-2 py-3 rounded-lg mt-3 cursor-pointer">
+            Proceed to payment
+          </button>
+        ) : (
+          <p className="p-2">Please add some items to checkout</p>
+        )}
+      </div>
+    )
   }
   return (
     <form className="container m-auto">
@@ -173,22 +188,7 @@ function CheckoutPage() {
           </div>
         </div>
       </div>
-      <div className="lg:w-1/2 md:w-2/3 mx-auto my-5">
-        <h2 className="border-b border-gray-300">Order Details</h2>
-        {matchingCartItems.map((item) => {
-          return <CartItem key={item.productId} cartItem={item} />;
-        })}
-        {!!matchingCartItems.length && (
-          <p className="p-2">{`Total amount (Including tax): ${subTotal}`}</p>
-        )}
-        {!!matchingCartItems.length ? (
-          <button onClick={submitInformation} type="submit" className="bg-blue-700 hover:bg-blue-900 w-full text-white flex items-center justify-center gap-2 p-2 py-3 rounded-lg mt-3 cursor-pointer">
-            Proceed to payment
-          </button>
-        ) : (
-          <p className="p-2">Please add some items to checkout</p>
-        )}
-      </div>
+      <OrderItems />
     </form>
   );
 }

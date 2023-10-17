@@ -4,12 +4,11 @@ import React, { useEffect } from 'react';
 import ProductTile from '../components/ProductTile';
 import { useDispatch } from 'react-redux';
 import { getProduct } from '@/redux/features/productSlice';
-import { ThunkDispatch } from 'redux-thunk';
-import { useAppSelector } from '@/redux/store';
+import { AppDispatch, useAppSelector } from '@/redux/store';
 
 function Mugs() {
   const { mugs } = useAppSelector(store => store.product);
-  const dispatch: ThunkDispatch<any, any, any> = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(getProduct());
   }, []);

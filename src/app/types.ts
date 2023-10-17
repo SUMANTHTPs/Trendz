@@ -56,3 +56,9 @@ export type StoredProductProps = {
   __v: number;
   _id: string;
 };
+
+export type CollectionProps = {
+  img: string;
+  link: string;
+  text: string;
+};

@@ -14,8 +14,9 @@ const initialState = {
 } as ExistingUserProps
 
 function LoginPage() {
-  const router = useRouter()
   const [values, setValues] = React.useState(initialState)
+  // hooks
+  const router = useRouter()
   const dispatch = useDispatch<AppDispatch>();
 
   const handleChange = (e: any) => {

@@ -9,10 +9,11 @@ import { toast } from "react-toastify";
 
 function Order() {
   const [name, email] = getTokenDecodedData();
+  // states
   const [ordersLoaded, setOrdersLoaded] = React.useState(false);
-
   const { orderedItems } = useAppSelector((store) => store.order);
   const { products: storeProducts } = useAppSelector((store) => store.product);
+  // hooks
   const dispatch = useDispatch<AppDispatch>();
 
   const fetchOrders = async () => {
