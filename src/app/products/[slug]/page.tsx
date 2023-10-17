@@ -56,7 +56,7 @@ export default function Product({ params }: ProductProps) {
                                 <SizeOptions product={product} />
                             </div>
                         </div>
-                        <div className="flex justify-between">
+                        <div className="flex flex-col gap-3 justify-between">
                             <span className="title-font font-medium text-2xl text-gray-900">₹{product?.price} /-</span>
                             <ProductActionButtonsContainer productIdParam={productIdParam} />
                         </div>
