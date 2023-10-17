@@ -19,11 +19,16 @@ function ServiceabilityCheck() {
             throw new Error("Unable to check service availability");
         }
     }
+    const handleEnter = (e: any) => {
+        if (e.key === "Enter") {
+            checkServiceability()
+        }
+    }
 
     return (
         <div>
             <div className="flex mt-5">
-                <input className="border border-grey-100 px-3 rounded-md w-full" type="text" placeholder="Enter an Indian pincode" value={pinCode} onChange={(e) => setPinCode(e.target.value)} />
+                <input onKeyDown={handleEnter} className="border border-grey-100 px-3 rounded-md w-full" type="text" placeholder="Enter an Indian pincode" value={pinCode} onChange={(e) => setPinCode(e.target.value)} />
                 <button className="flex ml-3 text-white bg-blue-900 border-0 py-2 px-6 focus:outline-none hover:bg-blue-700 rounded" disabled={!pinCode} onClick={checkServiceability}>Check</button>
             </div>
             <div className='p-1'>
