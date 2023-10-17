@@ -1,11 +1,12 @@
 "use client"
 import { clearCart } from '@/redux/features/cartSlice'
+import { getProduct } from '@/redux/features/productSlice'
 import { logoutUser } from '@/redux/features/userSlice'
 import { AppDispatch } from '@/redux/store'
 import { getTokenDecodedData } from '@/utils/utilities'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
 function Profile() {
@@ -14,6 +15,10 @@ function Profile() {
     // hooks
     const dispatch = useDispatch<AppDispatch>();
     const router = useRouter()
+
+    useEffect(() => {
+        dispatch(getProduct());
+    }, []);
 
     // logouts out
     const logout = () => {

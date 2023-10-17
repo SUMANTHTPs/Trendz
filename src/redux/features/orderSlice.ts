@@ -68,9 +68,11 @@ export const placeOrder = createAsyncThunk(
 export const getOrders = createAsyncThunk(
   "order/getOrder",
   async (userId: any, thunkAPI) => {
+    console.log("I came to dispatch")
     try {
       const response = await customFetch.post("getOrder", userId);
       return response.data;
+      console.log("response" + response.data)
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.msg);
     }
