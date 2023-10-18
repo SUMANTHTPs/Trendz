@@ -15,7 +15,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 
 const Navbar = () => {
   // states
-  const { cartItems } = useAppSelector((store) => store.cart)
+  const { cartItems, isOpen } = useAppSelector((store) => store.cart)
   const [token, setToken] = React.useState("")
   const [showCategories, setShowCategories] = React.useState(false);
   
@@ -69,7 +69,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <Cart />
+      {isOpen && <Cart />}
     </div>
   )
 }
