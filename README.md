@@ -14,4 +14,5 @@ pnpm dev
 bun dev
 ```
 
-Open [https://github.com/SUMANTHTPs/Trendz](https://github.com/SUMANTHTPs/Trendz) with your browser to see the live.
+Open [Trendz](https://trendz-chothshop.vercel.app/![image](https://github.com/SUMANTHTPs/Trendz/assets/55659354/8c5d4232-43cc-442e-a89a-32157beaa069)
+) with your browser to see the live.
