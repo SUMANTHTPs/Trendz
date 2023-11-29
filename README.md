@@ -14,5 +14,4 @@ pnpm dev
 bun dev
 ```
 
-Open [Trendz](https://trendz-chothshop.vercel.app)
-) with your browser to see the live.
+Open [Trendz](https://trendz-chothshop.vercel.app) with your browser to see the live.
